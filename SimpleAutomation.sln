@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAutomationTests", "SimpleAutomation\SimpleAutomationTests.csproj", "{ACF460D0-DA3D-429F-9132-7BD5F2749232}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAutomationTests", "SimpleAutomationTests\SimpleAutomationTests.csproj", "{ACF460D0-DA3D-429F-9132-7BD5F2749232}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAutomationCommon", "SimpleAutomationCommon\SimpleAutomationCommon.csproj", "{42A1E60E-1BE9-45DC-B547-9A721F2EFEA7}"
 EndProject

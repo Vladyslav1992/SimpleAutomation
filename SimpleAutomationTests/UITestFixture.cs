@@ -1,7 +1,7 @@
 ﻿using Atata;
 using NUnit.Framework;
 
-namespace SimpleCore
+namespace SimpleAutomationTests
 {
     [TestFixture]
     public class UITestFixture

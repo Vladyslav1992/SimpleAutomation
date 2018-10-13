@@ -1,10 +1,10 @@
 ﻿using Atata;
 using NUnit.Framework;
 
-namespace SimpleAutomation
+namespace SimpleAutomationTests
 {
     [TestFixture]
-    public class UITestFixture
+    public class UITestFixture1
     {
         [SetUp]
         public void SetUp()
@@ -13,8 +13,6 @@ namespace SimpleAutomation
             AtataContext.Configure().
                 //UseChrome().
                 //    WithArguments("start-maximized").
-                //    WithFixOfCommandExecutionDelay().
-                //    WithLocalDriverPath().
                 //UseBaseUrl("SITE_URL").
                 UseCulture("en-us").
                 UseNUnitTestName().
