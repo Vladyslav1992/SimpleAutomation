@@ -1,27 +1,23 @@
-﻿using System.Threading;
-using OpenQA.Selenium;
+﻿using Atata;
 
 namespace SimpleAutomationCommon.Pages
 {
-    public class PhonePage : BasePage
+    using _ = PhonePage;
+
+    public class PhonePage : BasePage<_>
     {
-        [FindsBy(How = How.XPath, Using = "//div[@class='product-variation ']//button[@class='btn btn-lg btn-add-cart']")]
-        private IWebElement _cartButton;
+        [FindByXPath("//div[@class='product-variation ']//button[@class='btn btn-lg btn-add-cart']")]
+        private Button<_> CartButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[text()='View cart']")]
-        private IWebElement _viewCart;
+        [FindByXPath("//a[text()='View cart']")]
+        private Link<_> ViewCart { get; set; }
 
-        public bool PageIsLoaded() => _cartButton.Displayed;
+        public bool PageIsLoaded() => CartButton.IsVisible;
 
-        public bool PopUpIsLoaded()
-        {
-            if (!_viewCart.Displayed)
-                Thread.Sleep(1000);
-            return _viewCart.Displayed;
-        } 
+        public bool PopUpIsLoaded() => ViewCart.IsVisible;
 
-        public void AddToCart() => _cartButton.Click();
+        public void AddToCart() => CartButton.Click();
 
-        public void ViewCart() => _viewCart.Click();
+        public void OpenCart() => ViewCart.Click();
     }
 }

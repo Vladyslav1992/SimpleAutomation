@@ -1,83 +1,73 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using OpenQA.Selenium;
+﻿using System.Linq;
+using Atata;
 
 namespace SimpleAutomationCommon.Pages
 {
-    public class CheckOutShippingPage : BasePage
+    using _ = CheckOutShippingPage;
+
+    public class CheckOutShippingPage : BasePage<_>
     {
-        [FindsBy(How = How.Name, Using = "shippingAddressId")]
-        private IList<IWebElement> _allAddress;
+        [FindByName("shippingAddressId")] 
+        private ControlList<Label<_>, _> AllAddress { get; set; }
 
-        [FindsBy(How = How.Name, Using = "NewAddressForm.ContactName")]
-        private IWebElement _contactName;
+        [FindByName("NewAddressForm.ContactName")]
+        private TextInput<_> ContactName { get; set; }
 
-        [FindsBy(How = How.Id, Using = "NewAddressForm_CountryId")]
-        private IWebElement _country;
+        [FindById("NewAddressForm_CountryId")] 
+        private Select<string, _> Country { get; set; }
 
-        [FindsBy(How = How.Id, Using = "NewAddressForm_StateOrProvinceId")]
-        private IWebElement _state;
+        [FindById("NewAddressForm_StateOrProvinceId")]
+        private Select<string, _> State { get; set; }
 
-        [FindsBy(How = How.Id, Using = "NewAddressForm_DistrictId")]
-        private IWebElement _district;
+        [FindById("NewAddressForm_DistrictId")]
+        private Label<_> District { get; set; }
 
-        [FindsBy(How = How.Id, Using = "NewAddressForm_City")]
-        private IWebElement _city;
+        [FindById("NewAddressForm_City")] 
+        private Label<_> City { get; set; }
 
-        [FindsBy(How = How.Id, Using = "NewAddressForm_ZipCode")]
-        private IWebElement _zipCode;
+        [FindById("NewAddressForm_ZipCode")] 
+        private Label<_> ZipCode { get; set; }
 
-        [FindsBy(How = How.Id, Using = "NewAddressForm_AddressLine1")]
-        private IWebElement _address;
+        [FindById("NewAddressForm_AddressLine1")]
+        private TextInput<_> Address { get; set; }
 
-        [FindsBy(How = How.Id, Using = "NewAddressForm_Phone")]
-        private IWebElement _phoneNumber;
+        [FindById("NewAddressForm_Phone")] 
+        private TextInput<_> PhoneNumber { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-order']")]
-        private IWebElement _continueButton;
+        [FindByXPath("//button[@class='btn btn-order']")]
+        private Button<_> ContinueButton { get; set; }
 
         public void ChooseAddress()
         {
-            if (_allAddress.Any())
+            if (AllAddress.Any())
             {
-                _allAddress.First().Click();
+                AllAddress.First().Click();
             }
-
             else
             {
-                _allAddress.Last().Click();
+                AllAddress.Last().Click();
             }
         }
 
-        public bool IsLoaded() => _continueButton.Displayed;
+        public bool IsLoaded() => ContinueButton.IsVisible;
 
-        public void FillAddressForm(string contactName, string country, string state, string address, string phoneNumber)
+        public void FillAddressForm(string contactName, string country, string state, string address,
+            string phoneNumber)
         {
-            if (_contactName.Displayed)
+            if (ContactName.IsVisible)
             {
-                _contactName.SendKeys(contactName);
+                ContactName.Set(contactName);
                 SelectCountry(country);
                 SelectState(state);
-                _address.SendKeys(address);
-                _phoneNumber.SendKeys(phoneNumber);
+                Address.Set(address);
+                PhoneNumber.Set(phoneNumber);
             }
         }
 
-        public void SelectCountry(string country)
-        {   
-            SelectElement countrySelect = new SelectElement(_country);
-            countrySelect.SelectByText(country);
-        }
+        public void SelectCountry(string country) => Country.Set(country);
 
-        public void SelectState(string state)
-        {
-            SelectElement stateSelect = new SelectElement(_state);
-            stateSelect.SelectByText(state);
-        }
+        public void SelectState(string state) => State.Set(state);
 
-        public void Submit()
-        {
-            _continueButton.Submit();
-        }
+        public void Submit() => ContinueButton.Click();
     }
 }

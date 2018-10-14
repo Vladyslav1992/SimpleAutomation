@@ -1,25 +1,22 @@
-﻿using OpenQA.Selenium;
+﻿using Atata;
 
 namespace SimpleAutomationCommon.Pages
 {
-    public class Cart : BasePage
+    using _ = Cart;
+
+    public class Cart : BasePage<_>
     {
-        [FindsBy(How = How.CssSelector, Using = "a[href='/checkout/shipping']")]
-        private IWebElement _checkOut;
+        [FindByCss("a[href='/checkout/shipping']")]
+        private Label<_> CheckOut { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[@href='/'][text()='Go to shopping']")]
-        private IWebElement _noItems;
+        [FindByXPath("//a[@href='/'][text()='Go to shopping']")]
+        private Label<_> NoItems { get; set; }
 
-        public bool IsLoaded()
-        {
-            if (_checkOut.IsPresent() || _noItems.IsPresent())
-                return true;
-            return false;
-        }
-            
+        public bool IsLoaded() => CheckOut.IsVisible || NoItems.IsVisible;
 
-        public void ProcessToCheckout() => _checkOut.Click();
 
-        public bool CheckEmptyCart() => _noItems.Displayed;
+        public void ProcessToCheckout() => CheckOut.Click();
+
+        public bool CheckEmptyCart() => NoItems.IsVisible;
     }
 }

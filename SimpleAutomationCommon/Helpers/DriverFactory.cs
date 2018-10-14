@@ -67,7 +67,7 @@ namespace SimpleAutomationCommon.Helpers
                         options.AddArgument($"--homepage={mainUrl}");
                         DriverInstanse = new ChromeDriver(options);
                         break;
-                    case Browser.IE:
+                    case Browser.Ie:
                         DriverInstanse = new InternetExplorerDriver();
                         break;
                     case Browser.Firefox:
@@ -96,14 +96,14 @@ namespace SimpleAutomationCommon.Helpers
         public string GetUrl()
             => DriverInstanse.Url;
 
-        public void ExecuteScript(string script, params object[] parameters)
-            => DriverInstanse.ExecuteJavaScript(script, parameters);
-
-        public T ExecuteScript<T>(string script, params object[] parameters)
-            => DriverInstanse.ExecuteJavaScript<T>(script, parameters);
-
-        public void TakeScreenshot(string fileName)
-            => DriverInstanse.TakeScreenshot().SaveAsFile(fileName, ScreenshotImageFormat.Png);
+//        public void ExecuteScript(string script, params object[] parameters)
+//            => DriverInstanse.ExecuteJavaScript(script, parameters);
+//
+//        public T ExecuteScript<T>(string script, params object[] parameters)
+//            => DriverInstanse.ExecuteJavaScript<T>(script, parameters);
+//
+//        public void TakeScreenshot(string fileName)
+//            => DriverInstanse.TakeScreenshot().SaveAsFile(fileName, ScreenshotImageFormat.Png);
 
         public IEnumerable<LogEntry> GetLogsBrowser()
             => DriverInstanse.Manage().Logs.GetLog(LogType.Browser);

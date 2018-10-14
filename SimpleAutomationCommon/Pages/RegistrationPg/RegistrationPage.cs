@@ -9,68 +9,68 @@ namespace SimpleAutomationCommon.Pages.RegistrationPg
     public class RegistrationPage : BasePage<_>
     {
         [FindById("Email")] 
-        private EmailInput<_> _emailInput { get; set; }
+        private EmailInput<_> EmailInput { get; set; }
 
         [FindById("FullName")] 
-        private TextInput<_> _fullNameInput { get; set; }
+        private TextInput<_> FullNameInput { get; set; }
 
         [FindById("Password")] 
-        private TextInput<_> _passwordInput { get; set; }
+        private TextInput<_> PasswordInput { get; set; }
 
         [FindById("ConfirmPassword")] 
-        private TextInput<_> _confirmPasswordInput { get; set; }
+        private TextInput<_> ConfirmPasswordInput { get; set; }
 
         [FindByXPath("//button[.='Register']")]
-        private Button<_> _registerButton { get; set; }
+        private Button<_> RegisterButton { get; set; }
 
         [FindByXPath("//button[@value='Facebook']")]
-        private Button<_> _loginWithFacebook { get; set; }
+        private Button<_> LoginWithFacebook { get; set; }
 
         [FindByXPath("//button[@value='Google']")]
-        private TextInput<_> _loginWithGoogle { get; set; }
+        private TextInput<_> LoginWithGoogle { get; set; }
 
         [FindByXPath("//div[@class='text-danger validation-summary-errors']//li")]
-        private Label<_> _errorMessage { get; set; }
+        private Label<_> ErrorMessage { get; set; }
 
         [FindById("Email-error")] 
-        private Label<_> _emailError { get; set; }
+        private Label<_> EmailError { get; set; }
 
         [FindById("FullName-error")] 
-        private Label<_> _fullNameError { get; set; }
+        private Label<_> FullNameError { get; set; }
 
         [FindById("Password-error")] 
-        private Label<_> _passwordError { get; set; }
+        private Label<_> PasswordError { get; set; }
 
         [FindById("ConfirmPassword-error")] 
-        private Label<_> _confirmPasswordError { get; set; }
+        private Label<_> ConfirmPasswordError { get; set; }
 
         public IEnumerable<string> GetErrors()
         {
             var errors = new List<string>();
 
-            if (_errorMessage.IsVisible)
+            if (ErrorMessage.IsVisible)
             {
-                errors.Add(_errorMessage.Get());
+                errors.Add(ErrorMessage.Get());
             }
 
-            if (_emailError.IsVisible)
+            if (EmailError.IsVisible)
             {
-                errors.Add(_emailError.Get());
+                errors.Add(EmailError.Get());
             }
 
-            if (_fullNameError.IsVisible)
+            if (FullNameError.IsVisible)
             {
-                errors.Add(_fullNameError.Get());
+                errors.Add(FullNameError.Get());
             }
 
-            if (_passwordError.IsVisible)
+            if (PasswordError.IsVisible)
             {
-                errors.Add(_passwordError.Get());
+                errors.Add(PasswordError.Get());
             }
 
-            if (_confirmPasswordError.IsVisible)
+            if (ConfirmPasswordError.IsVisible)
             {
-                errors.Add(_confirmPasswordError.Get());
+                errors.Add(ConfirmPasswordError.Get());
             }
 
             return errors;
@@ -90,33 +90,33 @@ namespace SimpleAutomationCommon.Pages.RegistrationPg
 
         public void FillForm(User user)
         {
-            _emailInput.Clear();
-            _emailInput.Set(user.Email.Value);
-            _fullNameInput.Clear();
-            _fullNameInput.Set(user.FullName);
-            _passwordInput.Clear();
-            _passwordInput.Set(user.Password);
-            _confirmPasswordInput.Clear();
-            _confirmPasswordInput.Set(user.Password);
+            EmailInput.Clear();
+            EmailInput.Set(user.Email.Value);
+            FullNameInput.Clear();
+            FullNameInput.Set(user.FullName);
+            PasswordInput.Clear();
+            PasswordInput.Set(user.Password);
+            ConfirmPasswordInput.Clear();
+            ConfirmPasswordInput.Set(user.Password);
         }
 
         public void FillForm(string email, string fullName, string password, string cpassword)
         {
-            _emailInput.Clear();
-            _emailInput.Set(email);
-            _fullNameInput.Clear();
-            _fullNameInput.Set(fullName);
-            _passwordInput.Clear();
-            _passwordInput.Set(password);
-            _confirmPasswordInput.Clear();
-            _confirmPasswordInput.Set(cpassword);
+            EmailInput.Clear();
+            EmailInput.Set(email);
+            FullNameInput.Clear();
+            FullNameInput.Set(fullName);
+            PasswordInput.Clear();
+            PasswordInput.Set(password);
+            ConfirmPasswordInput.Clear();
+            ConfirmPasswordInput.Set(cpassword);
         }
 
         public void Submit()
-            => _registerButton.Click();
+            => RegisterButton.Click();
 
         public bool IsLoaded()
-            => _registerButton.Exists();
+            => RegisterButton.Exists();
        
         public bool IsRegistered() => FullName.IsVisible;
     }

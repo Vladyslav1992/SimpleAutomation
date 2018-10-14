@@ -1,19 +1,29 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using OpenQA.Selenium;
+﻿using System.Linq;
+using Atata;
 
 namespace SimpleAutomationCommon.Pages
 {
-    public class OrderHistoryPage : BasePage
+    using _ = OrderHistoryPage;
+
+    public class OrderHistoryPage : BasePage<_>
     {
-        [FindsBy(How = How.XPath, Using = "//tr//p")]
-        private IList<IWebElement> _orderList;
+        [FindByXPath("//tr//p")]
+        private OrderedList<OrderItem,_> _orderList { get; set; }
 
-        [FindsBy(How = How.TagName, Using = "h2")]
-        private IWebElement _orderHistory;
+        [FindByCss("h2")] 
+        private Label<_> _orderHistory { get; set; }
+        
+        private class OrderItem : ListItem<_>
+        {
+            [FindByIndex(0)]
+            private Text<_> Name { get; set; }
 
-        public string GetOrderProduct() => _orderList.First().Text;
+            public string GetName() => Name.Get();
+        }
+        
+        public string GetOrderProduct(int index) 
+            => _orderList.Items.ElementAtOrDefault(index)?.GetName();
 
-        public bool IsLoaded() => _orderHistory.Displayed;
+        public bool IsLoaded() => _orderHistory.IsVisible;
     }
 }

@@ -1,14 +1,17 @@
-﻿using OpenQA.Selenium;
+﻿using Atata;
+using OpenQA.Selenium;
 
 namespace SimpleAutomationCommon.Pages
 {
-    public class CheckOutCongratsPage :BasePage
+    using _ = CheckOutCongratsPage;
+
+    public class CheckOutCongratsPage : BasePage<_>
     {
-        [FindsBy(How = How.TagName, Using = "h2")]
-        private IWebElement _successMessage;
+        [FindByCss("h2")] 
+        private IWebElement SuccessMessage { get; set; }
 
-        public bool IsLoaded() => _successMessage.Displayed;
+        public bool IsLoaded() => SuccessMessage.Displayed;
 
-        public string GetResult() => _successMessage.Text;
+        public string GetResult() => SuccessMessage.Text;
     }
 }

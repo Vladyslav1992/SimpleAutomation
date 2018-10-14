@@ -1,14 +1,16 @@
-﻿using OpenQA.Selenium;
+﻿using Atata;
 
 namespace SimpleAutomationCommon.Pages
 {
-    public class CheckOutPaymentPage : BasePage
+    using _ = CheckOutPaymentPage;
+    
+    public class CheckOutPaymentPage : BasePage<_>
     {
-        [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-order']")]
-        private IWebElement _cash;
+        [FindByXPath("//button[@class='btn btn-order']")]
+        private Button<_> Cash { get; set; }
 
-        public bool IsLoaded() => _cash.Displayed;
+        public bool IsLoaded() => Cash.IsVisible;
 
-        public void CashOnDelivery() => _cash.Click();
+        public void CashOnDelivery() => Cash.Click();
     }
 }

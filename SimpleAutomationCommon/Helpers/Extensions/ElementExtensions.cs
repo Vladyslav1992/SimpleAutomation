@@ -26,8 +26,8 @@ namespace SimpleAutomationCommon.Helpers.Extensions
 //            element.Click();
 //        }
 //
-        public static void RemoveFocus(this UIComponent element)
-            => Driver.ExecuteScript("document.activeElement.blur();");
+//        public static void RemoveFocus(this UIComponent element)
+//            => Driver.ExecuteScript("document.activeElement.blur();");
 //
 //        public static List<string> GetDropDownOptions(this HtmlDropDown dropDown)
 //            => dropDown.FindAll<HtmlLabel>()

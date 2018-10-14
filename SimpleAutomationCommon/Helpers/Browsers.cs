@@ -9,7 +9,7 @@ namespace SimpleAutomationCommon.Helpers
             switch (setting.ToLower())
             {
                 case "chrome": return Browser.Chrome;
-                case "ie": return Browser.IE;
+                case "ie": return Browser.Ie;
                 case "firefox": return Browser.Firefox;
                 default: throw new ArgumentOutOfRangeException();
             }
@@ -19,7 +19,7 @@ namespace SimpleAutomationCommon.Helpers
     public enum Browser
     {
         Chrome,
-        IE,
+        Ie,
         Firefox
     }
 }

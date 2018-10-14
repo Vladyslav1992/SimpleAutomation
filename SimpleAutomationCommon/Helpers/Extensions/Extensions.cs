@@ -8,36 +8,36 @@ namespace SimpleAutomationCommon.Helpers.Extensions
 {
     public static class Extensions
     {
-        public static T GetValueFromRow<T>(this TableRow tableRow, string columnName, T defaultValue = default(T))
-        {
-            if (typeof(T).IsGenericType && typeof(T).GetGenericTypeDefinition() == typeof(IEnumerable<>))
-                throw new InvalidOperationException("T can't be IEnumerable<>. Use GetIdsFromFirstRow instead");
-
-            string value;
-            if (!tableRow.TryGetValue(columnName, out value) || value.IsNullOrEmpty())
-                return defaultValue;
-
-            var type = typeof(T);
-            type = type.IsNullableType() ? type.GetTypeOfNullable() : type;
-
-            var converter = TypeDescriptor.GetConverter(type);
-            return (T)converter.ConvertFrom(value);
-        }
-
-        public static object GetValueFromRow(this TableRow tableRow, string columnName, Type type)
-        {
-            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IEnumerable<>))
-                throw new InvalidOperationException("T can't be IEnumerable<>. Use GetIdsFromFirstRow instead");
-
-            string value;
-            if (!tableRow.TryGetValue(columnName, out value) || value.IsNullOrEmpty())
-                return Activator.CreateInstance(type);
-
-            type = type.IsNullableType() ? type.GetTypeOfNullable() : type;
-
-            var converter = TypeDescriptor.GetConverter(type);
-            return converter.ConvertFrom(value);
-        }
+//        public static T GetValueFromRow<T>(this TableRow tableRow, string columnName, T defaultValue = default(T))
+//        {
+//            if (typeof(T).IsGenericType && typeof(T).GetGenericTypeDefinition() == typeof(IEnumerable<>))
+//                throw new InvalidOperationException("T can't be IEnumerable<>. Use GetIdsFromFirstRow instead");
+//
+//            string value;
+//            if (!tableRow.TryGetValue(columnName, out value) || value.IsNullOrEmpty())
+//                return defaultValue;
+//
+//            var type = typeof(T);
+//            type = type.IsNullableType() ? type.GetTypeOfNullable() : type;
+//
+//            var converter = TypeDescriptor.GetConverter(type);
+//            return (T)converter.ConvertFrom(value);
+//        }
+//
+//        public static object GetValueFromRow(this TableRow tableRow, string columnName, Type type)
+//        {
+//            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IEnumerable<>))
+//                throw new InvalidOperationException("T can't be IEnumerable<>. Use GetIdsFromFirstRow instead");
+//
+//            string value;
+//            if (!tableRow.TryGetValue(columnName, out value) || value.IsNullOrEmpty())
+//                return Activator.CreateInstance(type);
+//
+//            type = type.IsNullableType() ? type.GetTypeOfNullable() : type;
+//
+//            var converter = TypeDescriptor.GetConverter(type);
+//            return converter.ConvertFrom(value);
+//        }
 
         public static List<int> ParseIdsToList(this string companyIds)
         {

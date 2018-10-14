@@ -6,6 +6,7 @@ namespace SimpleAutomationCommon.Pages.LoginPg
 {
     using _ = LoginPage;
 
+    [Url("login")]
     public class LoginPage : BasePage<_>
     {
         [FindById("Email")] 
@@ -39,7 +40,7 @@ namespace SimpleAutomationCommon.Pages.LoginPg
         {
             LoginInput.Set(email);
             PasswordInput.Set(password);
-            PasswordInput.RemoveFocus();
+            //PasswordInput.RemoveFocus();
         }
 
         public void Submit()

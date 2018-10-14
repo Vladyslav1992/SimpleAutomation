@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace SimpleAutomationCommon
 {
     [TestFixture]
-    public class UITestFixture
+    public class UiTestFixture
     {
         [SetUp]
         public void SetUp()
