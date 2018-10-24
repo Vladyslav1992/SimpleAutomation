@@ -4,7 +4,7 @@ using SimpleAutomationCommon.Pages.LoginPg;
 
 namespace SimpleAutomationTests.Tests
 {
-    public class Tests1 : BaseTest
+    public class TestsTest : BaseTest
     {
         [Test]
         public void Test()
