@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Linq;
 using Atata;
 using NUnit.Framework;
@@ -7,7 +6,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using SimpleAutomationCommon.Helpers;
-using SimpleAutomationCommon.Helpers.Extensions;
 
 namespace SimpleAutomationTests
 {

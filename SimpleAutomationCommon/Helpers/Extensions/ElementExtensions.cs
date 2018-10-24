@@ -1,7 +1,4 @@
-﻿using Atata;
-using OpenQA.Selenium;
-
-namespace SimpleAutomationCommon.Helpers.Extensions
+﻿namespace SimpleAutomationCommon.Helpers.Extensions
 {
     public static class ElementExtensions
     {
