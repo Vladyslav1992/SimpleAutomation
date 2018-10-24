@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAutomationTests", "SimpleAutomationTests\SimpleAutomationTests.csproj", "{ACF460D0-DA3D-429F-9132-7BD5F2749232}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleAutomationTests", "SimpleAutomationTests\SimpleAutomationTests.csproj", "{ACF460D0-DA3D-429F-9132-7BD5F2749232}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAutomationCommon", "SimpleAutomationCommon\SimpleAutomationCommon.csproj", "{42A1E60E-1BE9-45DC-B547-9A721F2EFEA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleAutomationCommon", "SimpleAutomationCommon\SimpleAutomationCommon.csproj", "{42A1E60E-1BE9-45DC-B547-9A721F2EFEA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeAnalysis", "CodeAnalysis", "{0FA7D56F-8AF9-446F-B8B6-2D130FB4D605}"
+	ProjectSection(SolutionItems) = preProject
+		CodeAnalysis\Automation.Debug.ruleset = CodeAnalysis\Automation.Debug.ruleset
+		CodeAnalysis\Automation.Release.ruleset = CodeAnalysis\Automation.Release.ruleset
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

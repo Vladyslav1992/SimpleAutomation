@@ -10,8 +10,7 @@ namespace SimpleAutomationTests.Tests
         public void Test()
         {
             var loginPage = Go.To<LoginPage>();
-            loginPage.FillForm("zlo","zlo");
-            
+            loginPage.FillForm("zlo", "zlo");
         }
     }
 }
