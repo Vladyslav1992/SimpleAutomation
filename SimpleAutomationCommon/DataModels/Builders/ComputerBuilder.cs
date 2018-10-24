@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using SimpleAutomationCommon.DataModels.Enums;
-
-namespace SimpleAutomationCommon.DataModels.Builders
+﻿namespace SimpleAutomationCommon.DataModels.Builders
 {
+    using System.Collections.Generic;
+    using SimpleAutomationCommon.DataModels.Enums;
+
     public class ComputerBuilder
     {
         private readonly Computer _computer;

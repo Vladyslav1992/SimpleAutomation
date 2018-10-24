@@ -1,8 +1,8 @@
-﻿using System;
-using System.ComponentModel;
-
-namespace SimpleAutomationCommon.Helpers.Extensions
+﻿namespace SimpleAutomationCommon.Helpers.Extensions
 {
+    using System;
+    using System.ComponentModel;
+
     public static class EnumExtensions
     {
         public static string GetEnumDescription(this Enum enumValue)

@@ -1,8 +1,7 @@
-﻿using System.Linq;
-using Atata;
-
-namespace SimpleAutomationCommon.Pages
+﻿namespace SimpleAutomationCommon.Pages
 {
+    using System.Linq;
+    using Atata;
     using _ = OrderHistoryPage;
 
     public class OrderHistoryPage : BasePage<_>

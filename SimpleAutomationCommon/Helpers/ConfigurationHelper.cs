@@ -1,15 +1,15 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using Microsoft.Extensions.Configuration;
-using SimpleAutomationCommon.Helpers.Extensions;
-
-namespace SimpleAutomationCommon.Helpers
+﻿namespace SimpleAutomationCommon.Helpers
 {
+    using System;
+    using System.IO;
+    using System.Linq;
+    using Microsoft.Extensions.Configuration;
+    using SimpleAutomationCommon.Helpers.Extensions;
+
     public static class ConfigurationHelper
     {
         //public static string TestEnvironment { get; } = "IntegrationTest";
-        
+
         private static string GetSettings(string sectionName, string settingName)
         {
             var configuration = new ConfigurationBuilder()

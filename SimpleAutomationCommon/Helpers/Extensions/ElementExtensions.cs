@@ -3,7 +3,7 @@
     public static class ElementExtensions
     {
         private static readonly DriverFactory Driver = DriverFactory.GetDriverInstance();
-        
+
 //        public static void ScrollIntoView(this IWebElement element)
 //            => Driver.ExecuteScript("window.scrollTo(arguments[0], arguments[1]);",
 //                element.GetWebElement().Location.X, element.GetWebElement().Location.Y);

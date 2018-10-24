@@ -1,14 +1,14 @@
-﻿using System;
-using System.Linq;
-using Atata;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
-using SimpleAutomationCommon.Helpers;
-
-namespace SimpleAutomationTests
+﻿namespace SimpleAutomationTests
 {
+    using System;
+    using System.Linq;
+    using Atata;
+    using NUnit.Framework;
+    using OpenQA.Selenium;
+    using OpenQA.Selenium.Chrome;
+    using OpenQA.Selenium.Remote;
+    using SimpleAutomationCommon.Helpers;
+
     [TestFixture]
     public class BaseTest
     {

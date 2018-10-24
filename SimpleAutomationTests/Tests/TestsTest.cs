@@ -4,7 +4,7 @@
     using NUnit.Framework;
     using SimpleAutomationCommon.Pages.LoginPg;
 
-    public class TestsTfix allest : BaseTest
+    public class TestsTest : BaseTest
     {
         [Test]
         public void Test()

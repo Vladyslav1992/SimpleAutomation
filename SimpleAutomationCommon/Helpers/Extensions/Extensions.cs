@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text.RegularExpressions;
-
-namespace SimpleAutomationCommon.Helpers.Extensions
+﻿namespace SimpleAutomationCommon.Helpers.Extensions
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Linq;
+    using System.Text.RegularExpressions;
+
     public static class Extensions
     {
 //        public static T GetValueFromRow<T>(this TableRow tableRow, string columnName, T defaultValue = default(T))
@@ -104,13 +104,13 @@ namespace SimpleAutomationCommon.Helpers.Extensions
 
         public static string RemoveControlCharacters(this string inText)
             => inText
-                .Replace("\0", "")
-                .Replace("\a", "")
-                .Replace("\b", "")
-                .Replace("\t", "")
-                .Replace("\f", "")
-                .Replace("\n", "")
-                .Replace("\r", "");
+                .Replace("\0", string.Empty)
+                .Replace("\a", string.Empty)
+                .Replace("\b", string.Empty)
+                .Replace("\t", string.Empty)
+                .Replace("\f", string.Empty)
+                .Replace("\n", string.Empty)
+                .Replace("\r", string.Empty);
 
         public static IEnumerable<T> Add<T>(this IEnumerable<T> enumerable, params T[] items)
         {

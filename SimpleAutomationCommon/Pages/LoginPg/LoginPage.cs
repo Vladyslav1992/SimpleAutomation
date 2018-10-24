@@ -1,24 +1,23 @@
-﻿using Atata;
-using SimpleAutomationCommon.DataModels.Users;
-using SimpleAutomationCommon.Helpers.Extensions;
-
-namespace SimpleAutomationCommon.Pages.LoginPg
+﻿namespace SimpleAutomationCommon.Pages.LoginPg
 {
+    using Atata;
+    using SimpleAutomationCommon.DataModels.Users;
+    using SimpleAutomationCommon.Helpers.Extensions;
     using _ = LoginPage;
 
     [Url("login")]
     public class LoginPage : BasePage<_>
     {
-        [FindById("Email")] 
+        [FindById("Email")]
         private EmailInput<_> LoginInput { get; set; }
 
-        [FindByName("Password")] 
+        [FindByName("Password")]
         private PasswordInput<_> PasswordInput { get; set; }
 
-        [FindByName("RememberMe")] 
+        [FindByName("RememberMe")]
         private CheckBox<_> RememberMeCheckBox { get; set; }
 
-        [FindByXPath("//button[.='Log in']")] 
+        [FindByXPath("//button[.='Log in']")]
         private Button<_> LoginButton { get; set; }
 
         [FindByXPath("//div[@class='text-danger validation-summary-errors']//li")]
@@ -29,7 +28,7 @@ namespace SimpleAutomationCommon.Pages.LoginPg
             FillForm(user.Email.Value, user.Password);
             Submit();
         }
-        
+
         public void FillAndSubmit(string email, string password)
         {
             FillForm(email, password);

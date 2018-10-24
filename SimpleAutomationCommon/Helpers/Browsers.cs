@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace SimpleAutomationCommon.Helpers
+﻿namespace SimpleAutomationCommon.Helpers
 {
+    using System;
+
     public static class Browsers
     {
         public static Browser GetBrowser(string setting)

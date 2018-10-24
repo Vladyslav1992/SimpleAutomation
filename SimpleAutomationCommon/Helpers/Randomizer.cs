@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace SimpleAutomationCommon.Helpers
+﻿namespace SimpleAutomationCommon.Helpers
 {
+    using System;
+
     public static class Randomizer
     {
         private static readonly Random Random = new Random();
