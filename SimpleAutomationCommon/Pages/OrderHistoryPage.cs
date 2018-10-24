@@ -8,11 +8,11 @@ namespace SimpleAutomationCommon.Pages
     public class OrderHistoryPage : BasePage<_>
     {
         [FindByXPath("//tr//p")]
-        private OrderedList<OrderItem,_> _orderList { get; set; }
+        private OrderedList<OrderItem, _> OrderList { get; set; }
 
-        [FindByCss("h2")] 
-        private Label<_> _orderHistory { get; set; }
-        
+        [FindByCss("h2")]
+        private Label<_> OrderHistory { get; set; }
+
         private class OrderItem : ListItem<_>
         {
             [FindByIndex(0)]
@@ -20,10 +20,10 @@ namespace SimpleAutomationCommon.Pages
 
             public string GetName() => Name.Get();
         }
-        
-        public string GetOrderProduct(int index) 
-            => _orderList.Items.ElementAtOrDefault(index)?.GetName();
 
-        public bool IsLoaded() => _orderHistory.IsVisible;
+        public string GetOrderProduct(int index)
+            => OrderList.Items.ElementAtOrDefault(index)?.GetName();
+
+        public bool IsLoaded() => OrderHistory.IsVisible;
     }
 }
