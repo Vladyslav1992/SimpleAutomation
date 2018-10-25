@@ -12,19 +12,19 @@
     [TestFixture]
     public class BaseTest
     {
-        private AtataContextBuilder _contextBuilder;
+        private AtataContextBuilder contextBuilder;
 
         [OneTimeSetUp]
         protected void GeneralSetUp()
         {
-            _contextBuilder = AtataContext.Configure();
+            contextBuilder = AtataContext.Configure();
         }
 
         [SetUp]
         protected void SetUp()
         {
             StartBrowser();
-            _contextBuilder.Build();
+            contextBuilder.Build();
         }
 
         [TearDown]
@@ -54,7 +54,7 @@
                 capabilities.SetCapability(CapabilityType.BrowserName, browserCaps[0]);
                 capabilities.SetCapability(CapabilityType.Version, browserCaps[1]);
 
-                _contextBuilder
+                contextBuilder
                     .UseRemoteDriver()
                     .WithRemoteAddress(new Uri(selenoidHub))
                     .WithCapabilities(capabilities)
@@ -77,23 +77,23 @@
                 switch (browserName)
                 {
                     case Browser.Chrome:
-                        _contextBuilder
+                        contextBuilder
                             .UseChrome()
                             .WithArguments("start-maximized", "disable-infobars", "disable-extensions")
                             .WithOptions(x => x.AddUserProfilePreference("credentials_enable_service", false));
                         break;
                     case Browser.Ie:
-                        _contextBuilder.UseEdge();
+                        contextBuilder.UseEdge();
                         break;
                     case Browser.Firefox:
-                        _contextBuilder.UseFirefox();
+                        contextBuilder.UseFirefox();
                         break;
                     default:
                         throw new ArgumentOutOfRangeException($"No such browser registered as:{browserName}");
                 }
             }
 
-            _contextBuilder
+            contextBuilder
                 .UseBaseUrl(mainUrl)
                 .UseElementFindTimeout(ConfigurationHelper.ElementTimeOut)
                 .UseWaitingRetryInterval(ConfigurationHelper.RetryTimeOut)
