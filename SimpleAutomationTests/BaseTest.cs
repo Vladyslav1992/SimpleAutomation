@@ -15,16 +15,22 @@
         private AtataContextBuilder _contextBuilder;
 
         [OneTimeSetUp]
-        public void GeneralSetUp()
+        protected void GeneralSetUp()
         {
             _contextBuilder = AtataContext.Configure();
         }
 
         [SetUp]
-        public void SetUp()
+        protected void SetUp()
         {
             StartBrowser();
             _contextBuilder.Build();
+        }
+
+        [TearDown]
+        protected void TearDown()
+        {
+            AtataContext.Current?.CleanUp();
         }
 
         private void StartBrowser()
@@ -54,14 +60,14 @@
                     .WithCapabilities(capabilities)
                     .TakeScreenshotOnNUnitError()
                     .AddScreenshotFileSaving();
-                
-                
+
+
                 #region CapabilitiesStaff
-// capabilities.SetCapability("screenResolution", "1920x1080x24");
-// capabilities.SetCapability(RemoteWebDriverCapability.EnableVnc, true);
-// capabilities.SetCapability(RemoteWebDriverCapability.EnableVideo, true);
-// capabilities.SetCapability(RemoteWebDriverCapability.VideoFileName, TestRunData.TestName + Constants.Test.FileFormats.Mp4);
-// capabilities.SetCapability(RemoteWebDriverCapability.Name, TestRunConstants.TestSuiteName);
+                // capabilities.SetCapability("screenResolution", "1920x1080x24");
+                // capabilities.SetCapability(RemoteWebDriverCapability.EnableVnc, true);
+                // capabilities.SetCapability(RemoteWebDriverCapability.EnableVideo, true);
+                // capabilities.SetCapability(RemoteWebDriverCapability.VideoFileName, TestRunData.TestName + Constants.Test.FileFormats.Mp4);
+                // capabilities.SetCapability(RemoteWebDriverCapability.Name, TestRunConstants.TestSuiteName);
 
                 #endregion
             }
@@ -97,12 +103,6 @@
                 .LogNUnitError()
                 .TakeScreenshotOnNUnitError()
                 .AddScreenshotFileSaving();
-        }
-
-        [TearDown]
-        private void TearDown()
-        {
-            AtataContext.Current?.CleanUp();
         }
     }
 }
