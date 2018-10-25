@@ -5,13 +5,14 @@
     using System.Linq;
     using Extensions;
     using Microsoft.Extensions.Configuration;
+    using SimpleAutomationCommon.DataModels.Enums;
 
     public static class ConfigurationHelper
     {
         // public static string TestEnvironment { get; } = "IntegrationTest";
         public static string MainUrl { get; } = Environment.GetEnvironmentVariable("simplCommerceEndpoint") ?? GetSettings("App", "homeUrl");
         
-        public static Browser Browser => Browsers.GetBrowser(GetSettings("Browser", "Name"));
+        public static Browser Browser =>  Enum.Parse<Browser>(GetSettings("Browser", "Name"), true);
         
         public static TimeSpan RetryTimeOut => TimeSpan.FromMilliseconds(GetSettings("Browser", "retryTimeout").ToInt());
         

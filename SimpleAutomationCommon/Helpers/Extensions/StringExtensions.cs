@@ -25,7 +25,10 @@
         public static decimal? ToDecimal(this string s)
         {
             if (decimal.TryParse(s, out var value))
+            {
                 return value;
+            }
+
             return null;
         }
 

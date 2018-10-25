@@ -13,7 +13,6 @@
 
         public bool IsLoaded() => CheckOut.IsVisible || NoItems.IsVisible;
 
-
         public void ProcessToCheckout() => CheckOut.Click();
 
         public bool CheckEmptyCart() => NoItems.IsVisible;

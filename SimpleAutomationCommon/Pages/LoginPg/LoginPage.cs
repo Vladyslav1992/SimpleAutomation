@@ -39,7 +39,7 @@
         {
             LoginInput.Set(email);
             PasswordInput.Set(password);
-            //PasswordInput.RemoveFocus();
+            // PasswordInput.Scope;// TODO check this works well
         }
 
         public void Submit()
@@ -64,7 +64,7 @@
         public bool IsLoaded()
             => LoginButton.Exists();
 
-        public bool IsLogedIn()
+        public bool IsLoggedIn()
             => FullName.Exists();
     }
 }

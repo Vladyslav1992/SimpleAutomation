@@ -14,12 +14,15 @@ namespace SimpleAutomationCommon.Helpers
         public static void Run(string id, Action action)
         {
             if (Tasks.Keys.Contains(id))
+            {
                 WaitForComplete(id);
+            }
+
             Tasks.Add(id, TaskFactory.StartNew(action));
             Console.WriteLine($"Task {id} is started at {DateTime.UtcNow:G}");
         }
 
-        public static void WaitForComplete(string id)
+        private static void WaitForComplete(string id)
         {
             if (Tasks.Keys.Contains(id))
             {
@@ -40,7 +43,9 @@ namespace SimpleAutomationCommon.Helpers
                 Console.WriteLine($"Task {id} is completed at {DateTime.UtcNow:G}");
             }
             else
+            {
                 Console.WriteLine($"There is no such Task {id} or it is already complete");
+            }
         }
     }
 }

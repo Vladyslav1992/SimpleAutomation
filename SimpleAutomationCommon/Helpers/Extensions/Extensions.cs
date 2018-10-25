@@ -8,56 +8,16 @@
 
     public static class Extensions
     {
-//        public static T GetValueFromRow<T>(this TableRow tableRow, string columnName, T defaultValue = default(T))
-//        {
-//            if (typeof(T).IsGenericType && typeof(T).GetGenericTypeDefinition() == typeof(IEnumerable<>))
-//                throw new InvalidOperationException("T can't be IEnumerable<>. Use GetIdsFromFirstRow instead");
-//
-//            string value;
-//            if (!tableRow.TryGetValue(columnName, out value) || value.IsNullOrEmpty())
-//                return defaultValue;
-//
-//            var type = typeof(T);
-//            type = type.IsNullableType() ? type.GetTypeOfNullable() : type;
-//
-//            var converter = TypeDescriptor.GetConverter(type);
-//            return (T)converter.ConvertFrom(value);
-//        }
-//
-//        public static object GetValueFromRow(this TableRow tableRow, string columnName, Type type)
-//        {
-//            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IEnumerable<>))
-//                throw new InvalidOperationException("T can't be IEnumerable<>. Use GetIdsFromFirstRow instead");
-//
-//            string value;
-//            if (!tableRow.TryGetValue(columnName, out value) || value.IsNullOrEmpty())
-//                return Activator.CreateInstance(type);
-//
-//            type = type.IsNullableType() ? type.GetTypeOfNullable() : type;
-//
-//            var converter = TypeDescriptor.GetConverter(type);
-//            return converter.ConvertFrom(value);
-//        }
-
-        public static List<int> ParseIdsToList(this string companyIds)
+        public static List<T> ParseToList<T>(this string comaSeparatesString)
         {
-            var stringArray = !companyIds.IsNullOrEmpty()
-                ? companyIds.Split(new[] { "," }, StringSplitOptions.None)
-                : null;
-
-            return stringArray?.Select(int.Parse).ToList() ?? new List<int>();
-        }
-
-        public static List<T> ParseToList<T>(this string companyIds)
-        {
-            var stringArray = !companyIds.IsNullOrEmpty()
-                ? companyIds.Split(new[] { "," }, StringSplitOptions.None).Select(x => x.Trim())
+            var stringArray = !comaSeparatesString.IsNullOrEmpty()
+                ? comaSeparatesString.Split(new[] { "," }, StringSplitOptions.None).Select(x => x.Trim())
                 : null;
 
             return stringArray?.ToList().ConvertList<T>() ?? new List<T>();
         }
 
-        public static List<T> ConvertList<T>(this List<string> list)
+        public static List<T> ConvertList<T>(this IEnumerable<string> list)
         {
             var type = typeof(T);
             var converter = TypeDescriptor.GetConverter(type);
@@ -67,12 +27,18 @@
         public static DateTime? ParseBddDate(this string date)
         {
             if (date == null)
+            {
                 return null;
+            }
+
             var match = new Regex(@"\(Today\s*((?<sign>[+-])\s*(?<days>\d+)\))*").Match(date);
             if (!match.Success)
             {
-                if (DateTime.TryParse(date, out DateTime dateTime))
+                if (DateTime.TryParse(date, out var dateTime))
+                {
                     return dateTime.ToUniversalTime();
+                }
+
                 return null;
             }
 
@@ -86,17 +52,11 @@
             return result.Date;
         }
 
-        /// <summary>
-        /// Automapper implementation to identify of the type is nullable
-        /// </summary>
         private static bool IsNullableType(this Type type)
         {
             return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
         }
 
-        /// <summary>
-        /// Automapper implementation to get type of nullable
-        /// </summary>
         private static Type GetTypeOfNullable(this Type type)
         {
             return type.GetGenericArguments()[0];
@@ -115,6 +75,53 @@
         public static IEnumerable<T> Add<T>(this IEnumerable<T> enumerable, params T[] items)
         {
             return enumerable.Concat(items);
+        }
+        
+        public static string GetEnumDescription(this Enum enumValue)
+        {
+            var enumValueAsString = enumValue.ToString();
+
+            var type = enumValue.GetType();
+            var fieldInfo = type.GetField(enumValueAsString);
+            var attributes = fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+            if (attributes.Length <= 0)
+            {
+                return enumValueAsString;
+            }
+
+            var attribute = (DescriptionAttribute)attributes[0];
+            return attribute.Description;
+        }
+        
+        public static T GetValueFromDescription<T>(string description)
+        {
+            var type = typeof(T);
+            if (!type.IsEnum)
+            {
+                throw new InvalidOperationException();
+            }
+
+            foreach (var field in type.GetFields())
+            {
+                if (Attribute.GetCustomAttribute(
+                    field,
+                    typeof(DescriptionAttribute)) is DescriptionAttribute attribute)
+                {
+                    if (attribute.Description == description)
+                    {
+                        return (T)field.GetValue(null);
+                    }
+                }
+                else
+                {
+                    if (field.Name == description)
+                    {
+                        return (T)field.GetValue(null);
+                    }
+                }
+            }
+            throw new ArgumentException($"Not found {description}");
         }
     }
 }

@@ -17,7 +17,6 @@
             TimedLoop(action, persist, message, timeout);
         }
 
-
         public static T Return<T>(Func<T> func, Action callBack = null, string message = "", double timeout = -1)
         {
             var result = default(T);

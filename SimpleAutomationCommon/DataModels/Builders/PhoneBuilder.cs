@@ -24,7 +24,7 @@
             _phone.Detail = "Bla-Bla";
             _phone.Attributes = new Dictionary<ProductAttributes, string>
             {
-                [ProductAttributes.Os] = "wINDOWS",
+                [ProductAttributes.Os] = "WINDOWS",
             };
             return _phone;
         }

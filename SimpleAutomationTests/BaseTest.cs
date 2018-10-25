@@ -1,4 +1,6 @@
-﻿namespace SimpleAutomationTests
+﻿using SimpleAutomationCommon.DataModels.Enums;
+
+namespace SimpleAutomationTests
 {
     using System;
     using System.Linq;
@@ -12,19 +14,19 @@
     [TestFixture]
     public class BaseTest
     {
-        private AtataContextBuilder contextBuilder;
+        private AtataContextBuilder _contextBuilder;
 
         [OneTimeSetUp]
         protected void GeneralSetUp()
         {
-            contextBuilder = AtataContext.Configure();
+            _contextBuilder = AtataContext.Configure();
         }
 
         [SetUp]
         protected void SetUp()
         {
             StartBrowser();
-            contextBuilder.Build();
+            _contextBuilder.Build();
         }
 
         [TearDown]
@@ -54,15 +56,15 @@
                 capabilities.SetCapability(CapabilityType.BrowserName, browserCaps[0]);
                 capabilities.SetCapability(CapabilityType.Version, browserCaps[1]);
 
-                contextBuilder
+                _contextBuilder
                     .UseRemoteDriver()
                     .WithRemoteAddress(new Uri(selenoidHub))
                     .WithCapabilities(capabilities)
                     .TakeScreenshotOnNUnitError()
                     .AddScreenshotFileSaving();
 
-
                 #region CapabilitiesStaff
+
                 // capabilities.SetCapability("screenResolution", "1920x1080x24");
                 // capabilities.SetCapability(RemoteWebDriverCapability.EnableVnc, true);
                 // capabilities.SetCapability(RemoteWebDriverCapability.EnableVideo, true);
@@ -77,23 +79,23 @@
                 switch (browserName)
                 {
                     case Browser.Chrome:
-                        contextBuilder
+                        _contextBuilder
                             .UseChrome()
                             .WithArguments("start-maximized", "disable-infobars", "disable-extensions")
                             .WithOptions(x => x.AddUserProfilePreference("credentials_enable_service", false));
                         break;
                     case Browser.Ie:
-                        contextBuilder.UseEdge();
+                        _contextBuilder.UseEdge();
                         break;
                     case Browser.Firefox:
-                        contextBuilder.UseFirefox();
+                        _contextBuilder.UseFirefox();
                         break;
                     default:
                         throw new ArgumentOutOfRangeException($"No such browser registered as:{browserName}");
                 }
             }
 
-            contextBuilder
+            _contextBuilder
                 .UseBaseUrl(mainUrl)
                 .UseElementFindTimeout(ConfigurationHelper.ElementTimeOut)
                 .UseWaitingRetryInterval(ConfigurationHelper.RetryTimeOut)
