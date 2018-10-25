@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using Atata;
-    using SimpleAutomationCommon.Helpers.Extensions;
+    using Helpers.Extensions;
     using _ = AccountPage;
 
     public class AccountPage : Page<_>

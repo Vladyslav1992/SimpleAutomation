@@ -1,7 +1,7 @@
 ﻿namespace SimpleAutomationCommon.DataModels
 {
     using System.Collections.Generic;
-    using SimpleAutomationCommon.DataModels.Enums;
+    using Enums;
 
     public class BaseProduct
     {

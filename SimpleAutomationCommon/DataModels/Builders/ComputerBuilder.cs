@@ -1,7 +1,7 @@
 ﻿namespace SimpleAutomationCommon.DataModels.Builders
 {
     using System.Collections.Generic;
-    using SimpleAutomationCommon.DataModels.Enums;
+    using Enums;
 
     public class ComputerBuilder
     {

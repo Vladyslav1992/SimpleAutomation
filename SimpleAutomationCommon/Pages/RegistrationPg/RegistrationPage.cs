@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using Atata;
-    using SimpleAutomationCommon.DataModels.Users;
+    using DataModels.Users;
     using _ = RegistrationPage;
 
     public class RegistrationPage : BasePage<_>

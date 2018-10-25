@@ -3,9 +3,9 @@
     using System.Collections.ObjectModel;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Chrome;
-    using SimpleAutomationCommon.DataModels.Builders;
-    using SimpleAutomationCommon.DataModels.Enums;
-    using SimpleAutomationCommon.DataModels.Users;
+    using DataModels.Builders;
+    using DataModels.Enums;
+    using DataModels.Users;
 
     public static class CookiesManager
     {

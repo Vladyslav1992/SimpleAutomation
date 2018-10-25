@@ -1,7 +1,7 @@
 ﻿namespace SimpleAutomationCommon.DataModels.Builders
 {
     using System.Collections.Generic;
-    using SimpleAutomationCommon.DataModels.Users;
+    using Users;
 
     public static class BaseUsers
     {

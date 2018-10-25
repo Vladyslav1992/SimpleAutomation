@@ -1,7 +1,7 @@
 ﻿namespace SimpleAutomationCommon.Pages
 {
     using Atata;
-    using SimpleAutomationCommon.Helpers.Extensions;
+    using Helpers.Extensions;
 
     public class BasePage<TOwner> : Page<TOwner>
         where TOwner : BasePage<TOwner>

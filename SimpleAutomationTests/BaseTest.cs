@@ -38,7 +38,8 @@
             {
                 var browserCaps = browserParameters.Split('_').ToList();
                 var options = new ChromeOptions();
-                options.AddUserProfilePreference("credentials_enable_service",
+                options.AddUserProfilePreference(
+                    "credentials_enable_service",
                     false); // for disabling saving passwords notification
                 options.AddArguments(optionArguments.Split(';'));
                 var capabilities = options.ToCapabilities() as DesiredCapabilities;
@@ -53,14 +54,14 @@
                     .WithCapabilities(capabilities)
                     .TakeScreenshotOnNUnitError()
                     .AddScreenshotFileSaving();
-
+                
+                
                 #region CapabilitiesStaff
-
-                //capabilities.SetCapability("screenResolution", "1920x1080x24");
-                //                capabilities.SetCapability(RemoteWebDriverCapability.EnableVnc, true);
-                //                capabilities.SetCapability(RemoteWebDriverCapability.EnableVideo, true);
-                //                capabilities.SetCapability(RemoteWebDriverCapability.VideoFileName, TestRunData.TestName + Constants.Test.FileFormats.Mp4);
-                //                capabilities.SetCapability(RemoteWebDriverCapability.Name, TestRunConstants.TestSuiteName);
+// capabilities.SetCapability("screenResolution", "1920x1080x24");
+// capabilities.SetCapability(RemoteWebDriverCapability.EnableVnc, true);
+// capabilities.SetCapability(RemoteWebDriverCapability.EnableVideo, true);
+// capabilities.SetCapability(RemoteWebDriverCapability.VideoFileName, TestRunData.TestName + Constants.Test.FileFormats.Mp4);
+// capabilities.SetCapability(RemoteWebDriverCapability.Name, TestRunConstants.TestSuiteName);
 
                 #endregion
             }
@@ -82,7 +83,7 @@
                         _contextBuilder.UseFirefox();
                         break;
                     default:
-                        throw new ArgumentOutOfRangeException($"No such browser registred as:{browserName}");
+                        throw new ArgumentOutOfRangeException($"No such browser registered as:{browserName}");
                 }
             }
 
@@ -99,7 +100,7 @@
         }
 
         [TearDown]
-        public void TearDown()
+        private void TearDown()
         {
             AtataContext.Current?.CleanUp();
         }
