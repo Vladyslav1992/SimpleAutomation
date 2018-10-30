@@ -1,19 +1,18 @@
-﻿using System.Linq;
-using Atata;
-
-namespace SimpleAutomationCommon.Pages
+﻿namespace SimpleAutomationCommon.Pages
 {
+    using System.Linq;
+    using Atata;
     using _ = CheckOutShippingPage;
 
     public class CheckOutShippingPage : BasePage<_>
     {
-        [FindByName("shippingAddressId")] 
+        [FindByName("shippingAddressId")]
         private ControlList<Label<_>, _> AllAddress { get; set; }
 
         [FindByName("NewAddressForm.ContactName")]
         private TextInput<_> ContactName { get; set; }
 
-        [FindById("NewAddressForm_CountryId")] 
+        [FindById("NewAddressForm_CountryId")]
         private Select<string, _> Country { get; set; }
 
         [FindById("NewAddressForm_StateOrProvinceId")]
@@ -22,16 +21,16 @@ namespace SimpleAutomationCommon.Pages
         [FindById("NewAddressForm_DistrictId")]
         private Label<_> District { get; set; }
 
-        [FindById("NewAddressForm_City")] 
+        [FindById("NewAddressForm_City")]
         private Label<_> City { get; set; }
 
-        [FindById("NewAddressForm_ZipCode")] 
+        [FindById("NewAddressForm_ZipCode")]
         private Label<_> ZipCode { get; set; }
 
         [FindById("NewAddressForm_AddressLine1")]
         private TextInput<_> Address { get; set; }
 
-        [FindById("NewAddressForm_Phone")] 
+        [FindById("NewAddressForm_Phone")]
         private TextInput<_> PhoneNumber { get; set; }
 
         [FindByXPath("//button[@class='btn btn-order']")]

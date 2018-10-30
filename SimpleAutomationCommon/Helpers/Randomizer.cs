@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace SimpleAutomationCommon.Helpers
+﻿namespace SimpleAutomationCommon.Helpers
 {
+    using System;
+
     public static class Randomizer
     {
         private static readonly Random Random = new Random();
@@ -14,9 +14,9 @@ namespace SimpleAutomationCommon.Helpers
 
         public static string RandomString(int length, int minRange = 0, int maxRange = 9)
         {
-            string value = string.Empty;
+            var value = string.Empty;
 
-            for (int i = 0; i < length; i++)
+            for (var i = 0; i < length; i++)
             {
                 value += Random.Next(minRange, maxRange).ToString();
             }

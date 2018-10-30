@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using SimpleAutomationCommon.DataModels.Enums;
-
-namespace SimpleAutomationCommon.DataModels.Builders
+﻿namespace SimpleAutomationCommon.DataModels.Builders
 {
+    using System.Collections.Generic;
+    using Enums;
+
     public class PhoneBuilder
     {
         private readonly Phone _phone;
@@ -24,7 +24,7 @@ namespace SimpleAutomationCommon.DataModels.Builders
             _phone.Detail = "Bla-Bla";
             _phone.Attributes = new Dictionary<ProductAttributes, string>
             {
-                [ProductAttributes.Os] = "wINDOWS",
+                [ProductAttributes.Os] = "WINDOWS",
             };
             return _phone;
         }

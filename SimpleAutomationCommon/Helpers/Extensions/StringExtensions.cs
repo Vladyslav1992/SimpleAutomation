@@ -1,18 +1,18 @@
-﻿using System;
-
-namespace SimpleAutomationCommon.Helpers.Extensions
+﻿namespace SimpleAutomationCommon.Helpers.Extensions
 {
+    using System;
+
     public static class StringExtensions
     {
         public static string RemoveWhiteSpaces(this string @string)
         {
             var parts = @string.Split(' ');
-            return string.Join("", parts);
+            return string.Join(string.Empty, parts);
         }
 
         public static string Remove(this string @string, params string[] partsToRemove)
         {
-            partsToRemove.ForEach(p => @string = @string.Replace(p, ""));
+            partsToRemove.ForEach(p => @string = @string.Replace(p, string.Empty));
             return @string;
         }
 
@@ -25,7 +25,10 @@ namespace SimpleAutomationCommon.Helpers.Extensions
         public static decimal? ToDecimal(this string s)
         {
             if (decimal.TryParse(s, out var value))
+            {
                 return value;
+            }
+
             return null;
         }
 
@@ -33,16 +36,16 @@ namespace SimpleAutomationCommon.Helpers.Extensions
         {
             DateTime.TryParse(s, out var date);
             return date;
-        }  
-        
+        }
+
         public static string RemoveControlCharacters(this string inText)
             => inText
-                .Replace("\0", "")
-                .Replace("\a", "")
-                .Replace("\b", "")
-                .Replace("\t", "")
-                .Replace("\f", "")
-                .Replace("\n", "")
-                .Replace("\r", "");
+                .Replace("\0", string.Empty)
+                .Replace("\a", string.Empty)
+                .Replace("\b", string.Empty)
+                .Replace("\t", string.Empty)
+                .Replace("\f", string.Empty)
+                .Replace("\n", string.Empty)
+                .Replace("\r", string.Empty);
     }
 }

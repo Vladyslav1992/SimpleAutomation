@@ -1,14 +1,14 @@
-﻿using System.Net.Mail;
-
-namespace SimpleAutomationCommon.DataModels
+﻿namespace SimpleAutomationCommon.DataModels
 {
+    using System.Net.Mail;
+
     public class Email
     {
         public string Value { get; }
 
         public Email(string value)
         {
-            Value = IsValid(value) ? value : "";
+            Value = IsValid(value) ? value : string.Empty;
         }
 
         private static bool IsValid(string email)

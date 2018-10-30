@@ -1,13 +1,12 @@
-﻿using System.Linq;
-using Atata;
-
-namespace SimpleAutomationCommon.Pages
+﻿namespace SimpleAutomationCommon.Pages
 {
+    using System.Linq;
+    using Atata;
     using _ = PhonesPage;
 
     public class PhonesPage : BasePage<_>
     {
-        [FindByCss("h2")] 
+        [FindByCss("h2")]
         private Label<_> PhonesTitle { get; set; }
 
         [FindByCss("div[class = 'row product-list'] h5")]
@@ -15,10 +14,10 @@ namespace SimpleAutomationCommon.Pages
 
         public class ProductItem : ListItem<_>
         {
-            [FindByIndex(0)] 
+            [FindByIndex(0)]
             private Text<_> Name { get; set; }
 
-            [FindByIndex(1)] 
+            [FindByIndex(1)]
             private Number<_> Amount { get; set; }
 
             public string GetName() => Name.Get();

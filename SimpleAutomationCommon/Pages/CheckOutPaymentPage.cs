@@ -1,9 +1,8 @@
-﻿using Atata;
-
-namespace SimpleAutomationCommon.Pages
+﻿namespace SimpleAutomationCommon.Pages
 {
+    using Atata;
     using _ = CheckOutPaymentPage;
-    
+
     public class CheckOutPaymentPage : BasePage<_>
     {
         [FindByXPath("//button[@class='btn btn-order']")]

@@ -1,30 +1,38 @@
-﻿using System;
-using System.Linq;
-using Atata;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
-using SimpleAutomationCommon.Helpers;
+﻿using SimpleAutomationCommon.DataModels.Enums;
 
 namespace SimpleAutomationTests
 {
+    using System;
+    using System.Linq;
+    using Atata;
+    using NUnit.Framework;
+    using OpenQA.Selenium;
+    using OpenQA.Selenium.Chrome;
+    using OpenQA.Selenium.Remote;
+    using SimpleAutomationCommon.Helpers;
+
     [TestFixture]
     public class BaseTest
     {
         private AtataContextBuilder _contextBuilder;
 
         [OneTimeSetUp]
-        public void GeneralSetUp()
+        protected void GeneralSetUp()
         {
             _contextBuilder = AtataContext.Configure();
         }
 
         [SetUp]
-        public void SetUp()
+        protected void SetUp()
         {
             StartBrowser();
             _contextBuilder.Build();
+        }
+
+        [TearDown]
+        protected void TearDown()
+        {
+            AtataContext.Current?.CleanUp();
         }
 
         private void StartBrowser()
@@ -38,7 +46,8 @@ namespace SimpleAutomationTests
             {
                 var browserCaps = browserParameters.Split('_').ToList();
                 var options = new ChromeOptions();
-                options.AddUserProfilePreference("credentials_enable_service",
+                options.AddUserProfilePreference(
+                    "credentials_enable_service",
                     false); // for disabling saving passwords notification
                 options.AddArguments(optionArguments.Split(';'));
                 var capabilities = options.ToCapabilities() as DesiredCapabilities;
@@ -56,11 +65,11 @@ namespace SimpleAutomationTests
 
                 #region CapabilitiesStaff
 
-                //capabilities.SetCapability("screenResolution", "1920x1080x24");
-                //                capabilities.SetCapability(RemoteWebDriverCapability.EnableVnc, true);
-                //                capabilities.SetCapability(RemoteWebDriverCapability.EnableVideo, true);
-                //                capabilities.SetCapability(RemoteWebDriverCapability.VideoFileName, TestRunData.TestName + Constants.Test.FileFormats.Mp4);
-                //                capabilities.SetCapability(RemoteWebDriverCapability.Name, TestRunConstants.TestSuiteName);
+                // capabilities.SetCapability("screenResolution", "1920x1080x24");
+                // capabilities.SetCapability(RemoteWebDriverCapability.EnableVnc, true);
+                // capabilities.SetCapability(RemoteWebDriverCapability.EnableVideo, true);
+                // capabilities.SetCapability(RemoteWebDriverCapability.VideoFileName, TestRunData.TestName + Constants.Test.FileFormats.Mp4);
+                // capabilities.SetCapability(RemoteWebDriverCapability.Name, TestRunConstants.TestSuiteName);
 
                 #endregion
             }
@@ -82,7 +91,7 @@ namespace SimpleAutomationTests
                         _contextBuilder.UseFirefox();
                         break;
                     default:
-                        throw new ArgumentOutOfRangeException($"No such browser registred as:{browserName}");
+                        throw new ArgumentOutOfRangeException($"No such browser registered as:{browserName}");
                 }
             }
 
@@ -96,12 +105,6 @@ namespace SimpleAutomationTests
                 .LogNUnitError()
                 .TakeScreenshotOnNUnitError()
                 .AddScreenshotFileSaving();
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            AtataContext.Current?.CleanUp();
         }
     }
 }

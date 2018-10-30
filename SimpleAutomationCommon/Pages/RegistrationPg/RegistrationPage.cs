@@ -1,23 +1,22 @@
-﻿using System.Collections.Generic;
-using Atata;
-using SimpleAutomationCommon.DataModels.Users;
-
-namespace SimpleAutomationCommon.Pages.RegistrationPg
+﻿namespace SimpleAutomationCommon.Pages.RegistrationPg
 {
+    using System.Collections.Generic;
+    using Atata;
+    using DataModels.Users;
     using _ = RegistrationPage;
 
     public class RegistrationPage : BasePage<_>
     {
-        [FindById("Email")] 
+        [FindById("Email")]
         private EmailInput<_> EmailInput { get; set; }
 
-        [FindById("FullName")] 
+        [FindById("FullName")]
         private TextInput<_> FullNameInput { get; set; }
 
-        [FindById("Password")] 
+        [FindById("Password")]
         private TextInput<_> PasswordInput { get; set; }
 
-        [FindById("ConfirmPassword")] 
+        [FindById("ConfirmPassword")]
         private TextInput<_> ConfirmPasswordInput { get; set; }
 
         [FindByXPath("//button[.='Register']")]
@@ -32,16 +31,16 @@ namespace SimpleAutomationCommon.Pages.RegistrationPg
         [FindByXPath("//div[@class='text-danger validation-summary-errors']//li")]
         private Label<_> ErrorMessage { get; set; }
 
-        [FindById("Email-error")] 
+        [FindById("Email-error")]
         private Label<_> EmailError { get; set; }
 
-        [FindById("FullName-error")] 
+        [FindById("FullName-error")]
         private Label<_> FullNameError { get; set; }
 
-        [FindById("Password-error")] 
+        [FindById("Password-error")]
         private Label<_> PasswordError { get; set; }
 
-        [FindById("ConfirmPassword-error")] 
+        [FindById("ConfirmPassword-error")]
         private Label<_> ConfirmPasswordError { get; set; }
 
         public IEnumerable<string> GetErrors()
@@ -117,7 +116,7 @@ namespace SimpleAutomationCommon.Pages.RegistrationPg
 
         public bool IsLoaded()
             => RegisterButton.Exists();
-       
+
         public bool IsRegistered() => FullName.IsVisible;
     }
 }

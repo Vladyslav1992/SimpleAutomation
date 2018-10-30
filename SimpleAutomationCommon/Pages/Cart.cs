@@ -1,7 +1,6 @@
-﻿using Atata;
-
-namespace SimpleAutomationCommon.Pages
+﻿namespace SimpleAutomationCommon.Pages
 {
+    using Atata;
     using _ = Cart;
 
     public class Cart : BasePage<_>
@@ -13,7 +12,6 @@ namespace SimpleAutomationCommon.Pages
         private Label<_> NoItems { get; set; }
 
         public bool IsLoaded() => CheckOut.IsVisible || NoItems.IsVisible;
-
 
         public void ProcessToCheckout() => CheckOut.Click();
 

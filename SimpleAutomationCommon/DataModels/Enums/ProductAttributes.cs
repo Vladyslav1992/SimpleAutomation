@@ -1,6 +1,6 @@
 ﻿namespace SimpleAutomationCommon.DataModels.Enums
 {
-    public enum  ProductAttributes
+    public enum ProductAttributes
     {
         ShortDesc,
         Cpu,
