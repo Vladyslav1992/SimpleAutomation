@@ -5,6 +5,7 @@
     using DataModels.Users;
     using _ = RegistrationPage;
 
+    [Url("register")]
     public class RegistrationPage : BasePage<_>
     {
         [FindById("Email")]
@@ -32,7 +33,7 @@
         private Label<_> ErrorMessage { get; set; }
 
         [FindById("Email-error")]
-        private Label<_> EmailError { get; set; }
+        public Label<_> EmailError { get; set; }
 
         [FindById("FullName-error")]
         private Label<_> FullNameError { get; set; }
