@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Atata;
 using NUnit.Framework;
 using SimpleAutomationCommon.Pages.RegistrationPg;
+using FluentAssertions;
 
 namespace SimpleAutomationTests.Tests.RegistrationTests
 {
@@ -15,7 +17,7 @@ namespace SimpleAutomationTests.Tests.RegistrationTests
             var regitrationPage = Go.To<RegistrationPage>();
             regitrationPage.FillAndSubmit(string.Empty, "invalidUser", "qwerty", "qwerty");
 
-            regitrationPage.EmailError.Should.Equals("The Email field is required.");
+            var errors = regitrationPage.GetErrors().Should().Contain("The Email field is required.");
         }
     }
 }
