@@ -33,7 +33,7 @@
         private Text<_> ErrorMessage { get; set; }
 
         [FindById("Email-error")]
-        public Text<_> EmailError { get; set; }
+        private Text<_> EmailError { get; set; }
 
         [FindById("FullName-error")]
         private Text<_> FullNameError { get; set; }

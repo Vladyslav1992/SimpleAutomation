@@ -17,7 +17,7 @@ namespace SimpleAutomationTests.Tests.RegistrationTests
             var regitrationPage = Go.To<RegistrationPage>();
             regitrationPage.FillAndSubmit(string.Empty, "invalidUser", "qwerty", "qwerty");
 
-            var errors = regitrationPage.GetErrors().Should().Contain("The Email field is required.");
+            regitrationPage.GetErrors().Should().Contain("The Email field is required.");
         }
     }
 }
