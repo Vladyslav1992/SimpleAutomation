@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Atata;
-using NUnit.Framework;
-using SimpleAutomationCommon.Pages.RegistrationPg;
-using FluentAssertions;
-
-namespace SimpleAutomationTests.Tests.RegistrationTests
+﻿namespace SimpleAutomationTests.Tests.RegistrationTests
 {
+    using Atata;
+    using FluentAssertions;
+    using NUnit.Framework;
+    using SimpleAutomationCommon.Pages.RegistrationPg;
+    using Randomizer = SimpleAutomationCommon.Helpers.Randomizer;
+
     public class InvalidRegistrationTests : BaseTest
     {
         [Test]
@@ -35,7 +32,7 @@ namespace SimpleAutomationTests.Tests.RegistrationTests
             var regitrationPage = Go.To<RegistrationPage>();
             regitrationPage.FillAndSubmit("invalidUser@test.com", "invalidUser", string.Empty, "qwerty");
 
-            regitrationPage.GetErrors().Should().Contain("The Password field is required.");
+            regitrationPage.GetErrors().Should().Contain("The password and confirmation password do not match.");
         }
 
         [Test]
@@ -60,7 +57,7 @@ namespace SimpleAutomationTests.Tests.RegistrationTests
         public void RegisterWithShortPassword()
         {
             var regitrationPage = Go.To<RegistrationPage>();
-            regitrationPage.FillAndSubmit("invalidUser@test.com", "invalidUser", "qwerty", "qwerty");
+            regitrationPage.FillAndSubmit("invalidUser@test.com", "invalidUser", "qwe", "qwe");
 
             regitrationPage.GetErrors().Should().Contain("The Password must be at least 4 and at max 100 characters long.");
         }
@@ -68,10 +65,21 @@ namespace SimpleAutomationTests.Tests.RegistrationTests
         [Test]
         public void RegisterWithLongPassword()
         {
+            var password = Randomizer.RandomString(101);
+
             var regitrationPage = Go.To<RegistrationPage>();
-            regitrationPage.FillAndSubmit("invalidUser@test.com", "invalidUser", "qwerty", "qwerty");
+            regitrationPage.FillAndSubmit("invalidUser@test.com", "invalidUser", password, password);
 
             regitrationPage.GetErrors().Should().Contain("The Password must be at least 4 and at max 100 characters long.");
+        }
+
+        [Test]
+        public void RegisterWithExistingUser()
+        {
+            var regitrationPage = Go.To<RegistrationPage>();
+            regitrationPage.FillAndSubmit("admin@SimplCommerce.com", "invalidUser", "qwerty", "qwerty");
+
+            regitrationPage.GetErrors().Should().Contain("User name 'admin@SimplCommerce.com' is already taken.");
         }
     }
 }
