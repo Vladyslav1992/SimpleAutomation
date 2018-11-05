@@ -4,12 +4,14 @@
     using FluentAssertions;
     using NUnit.Framework;
     using SimpleAutomationCommon.Pages.RegistrationPg;
+    using SimpleAutomationTests.TestDataProviders;
     using Randomizer = SimpleAutomationCommon.Helpers.Randomizer;
 
     public class InvalidRegistrationTests : BaseTest
     {
         [Test]
-        public void RegisterWithoutEmail()
+        [TestCaseSource(typeof(RegistrationTestsDataProvider), "TestCases")]
+        public void RegisterWithoutEmail(string email, string fullName, string password, string cpassword, string errorMessage)
         {
             var regitrationPage = Go.To<RegistrationPage>();
             regitrationPage.FillAndSubmit(string.Empty, "invalidUser", "qwerty", "qwerty");
