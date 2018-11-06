@@ -33,5 +33,5 @@ namespace SimpleAutomationTests.Tests
             var error = loginPage.GetError();
             error.Should().Be(errorMessage);
         }
-    }  
+    }
 }
