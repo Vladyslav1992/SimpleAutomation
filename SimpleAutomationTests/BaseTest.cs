@@ -53,6 +53,8 @@ namespace SimpleAutomationTests
                 var capabilities = options.ToCapabilities() as DesiredCapabilities;
                 capabilities.Platform = new Platform(PlatformType.Any);
                 capabilities.SetCapability("enableVNC", true);
+                capabilities.SetCapability("enableVideo", false);
+                capabilities.SetCapability("screenResolution", "1920x1080x24");
                 capabilities.SetCapability(CapabilityType.BrowserName, browserCaps[0]);
                 capabilities.SetCapability(CapabilityType.Version, browserCaps[1]);
 
@@ -62,16 +64,6 @@ namespace SimpleAutomationTests
                     .WithCapabilities(capabilities)
                     .TakeScreenshotOnNUnitError()
                     .AddScreenshotFileSaving();
-
-                #region CapabilitiesStaff
-
-                // capabilities.SetCapability("screenResolution", "1920x1080x24");
-                // capabilities.SetCapability(RemoteWebDriverCapability.EnableVnc, true);
-                // capabilities.SetCapability(RemoteWebDriverCapability.EnableVideo, true);
-                // capabilities.SetCapability(RemoteWebDriverCapability.VideoFileName, TestRunData.TestName + Constants.Test.FileFormats.Mp4);
-                // capabilities.SetCapability(RemoteWebDriverCapability.Name, TestRunConstants.TestSuiteName);
-
-                #endregion
             }
             else
             {

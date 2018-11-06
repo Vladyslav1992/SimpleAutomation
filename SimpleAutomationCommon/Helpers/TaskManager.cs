@@ -40,6 +40,7 @@ namespace SimpleAutomationCommon.Helpers
                     Tasks[id].Dispose();
                     Tasks.Remove(id);
                 }
+
                 Console.WriteLine($"Task {id} is completed at {DateTime.UtcNow:G}");
             }
             else

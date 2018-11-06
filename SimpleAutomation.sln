@@ -9,8 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleAutomationCommon", "S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeAnalysis", "CodeAnalysis", "{0FA7D56F-8AF9-446F-B8B6-2D130FB4D605}"
 	ProjectSection(SolutionItems) = preProject
-		CodeAnalysis\Automation.Debug.ruleset = CodeAnalysis\Automation.Debug.ruleset
-		CodeAnalysis\Automation.Release.ruleset = CodeAnalysis\Automation.Release.ruleset
+		CodeAnalysis\Automation.ruleset = CodeAnalysis\Automation.ruleset
 	EndProjectSection
 EndProject
 Global
