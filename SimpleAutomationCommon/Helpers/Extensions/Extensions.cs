@@ -49,17 +49,8 @@
                 var dayNumber = match.Groups["days"].Value;
                 result = result.AddDays(Convert.ToInt32(dayOperator + dayNumber));
             }
+
             return result.Date;
-        }
-
-        private static bool IsNullableType(this Type type)
-        {
-            return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
-        }
-
-        private static Type GetTypeOfNullable(this Type type)
-        {
-            return type.GetGenericArguments()[0];
         }
 
         public static string RemoveControlCharacters(this string inText)
@@ -76,7 +67,7 @@
         {
             return enumerable.Concat(items);
         }
-        
+
         public static string GetEnumDescription(this Enum enumValue)
         {
             var enumValueAsString = enumValue.ToString();
@@ -93,7 +84,7 @@
             var attribute = (DescriptionAttribute)attributes[0];
             return attribute.Description;
         }
-        
+
         public static T GetValueFromDescription<T>(string description)
         {
             var type = typeof(T);
@@ -121,7 +112,18 @@
                     }
                 }
             }
+
             throw new ArgumentException($"Not found {description}");
+        }
+
+        private static bool IsNullableType(this Type type)
+        {
+            return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
+        }
+
+        private static Type GetTypeOfNullable(this Type type)
+        {
+            return type.GetGenericArguments()[0];
         }
     }
 }
