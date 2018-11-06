@@ -6,13 +6,14 @@
     using Helpers.Extensions;
     using _ = AccountPage;
 
+    [Url("user")]
     public class AccountPage : Page<_>
     {
         [FindByXPath("//a[text()='Edit']")]
-        private Label<_> EditAccount { get; set; }
+        private Text<_> EditAccount { get; set; }
 
         [FindByXPath("//div[.='Account Information']/following-sibling::div")]
-        private Label<_> UserInfo { get; set; }
+        private Text<_> UserInfo { get; set; }
 
         public IEnumerable<string> GetInfo()
             => UserInfo.Get().Remove("\r\nEdit", "\r").Split('\n').Select(i => i.Trim());
