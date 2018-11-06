@@ -12,7 +12,7 @@
         [FindByXPath("//a[text()='Edit']")]
         private Text<_> EditAccount { get; set; }
 
-        [FindByXPath("//div[.='Account Information']/following-sibling::div")] ////div[.='Account Information']/following-sibling::div)/descendant-or-self::label
+        [FindByXPath("//div[.='Account Information']/following-sibling::div")]
         private Text<_> UserInfo { get; set; }
 
         public IEnumerable<string> GetInfo()
