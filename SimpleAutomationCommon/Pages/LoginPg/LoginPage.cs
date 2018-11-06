@@ -21,7 +21,7 @@
         private Button<_> LoginButton { get; set; }
 
         [FindByXPath("//div[@class='text-danger validation-summary-errors']//li")]
-        private Label<_> Error { get; set; }
+        private Text<_> Error { get; set; }
 
         public void FillAndSubmit(User user)
         {

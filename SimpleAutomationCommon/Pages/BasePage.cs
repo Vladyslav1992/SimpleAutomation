@@ -10,7 +10,7 @@
         protected Link<TOwner> Login { get; set; }
 
         [FindByCss("a[href = '/user']")]
-        protected Label<TOwner> FullName { get; set; }
+        protected Text<TOwner> FullName { get; set; }
 
         [FindByCss("a[href = '/register']")]
         protected Link<TOwner> Register { get; set; }

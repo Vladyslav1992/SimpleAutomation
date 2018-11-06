@@ -10,7 +10,7 @@
     public class AccountPage : Page<_>
     {
         [FindByXPath("//a[text()='Edit']")]
-        private Label<_> EditAccount { get; set; }
+        private Text<_> EditAccount { get; set; }
 
         [FindByXPath("//div[.='Account Information']/following-sibling::div")] ////div[.='Account Information']/following-sibling::div)/descendant-or-self::label
         private Text<_> UserInfo { get; set; }
