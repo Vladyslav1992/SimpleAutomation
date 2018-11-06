@@ -5,7 +5,6 @@
     using NUnit.Framework;
     using SimpleAutomationCommon.Pages.RegistrationPg;
     using SimpleAutomationTests.TestDataProviders;
-    using Randomizer = SimpleAutomationCommon.Helpers.Randomizer;
 
     public class InvalidRegistrationTests : BaseTest
     {
@@ -67,7 +66,7 @@
         [Test]
         public void RegisterWithLongPassword()
         {
-            var password = Randomizer.RandomString(101);
+            var password = Randomizer.GetString(numberOfCharacters: 101);
 
             var regitrationPage = Go.To<RegistrationPage>();
             regitrationPage.FillAndSubmit("invalidUser@test.com", "invalidUser", password, password);
