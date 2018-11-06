@@ -39,7 +39,6 @@
         {
             LoginInput.Set(email);
             PasswordInput.Set(password);
-            // PasswordInput.Scope;// TODO check this works well
         }
 
         public void Submit()

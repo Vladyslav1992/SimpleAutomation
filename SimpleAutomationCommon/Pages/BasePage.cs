@@ -77,8 +77,5 @@
             var userName = FullName.Get();
             return userName.Remove("Hello ", "!");
         }
-
-//        [FindBy(How = How.LinkText, Using = "SimplCommerce")]
-//        protected Label<TOwner> FooterLinkText { get; set; }
     }
 }

@@ -22,7 +22,7 @@
 
             public string GetName() => Name.Get();
 
-            public int GetAmount() => (int) Amount.Get().GetValueOrDefault();
+            public int GetAmount() => (int)Amount.Get().GetValueOrDefault();
         }
 
         public void ChooseProduct(string productName)
