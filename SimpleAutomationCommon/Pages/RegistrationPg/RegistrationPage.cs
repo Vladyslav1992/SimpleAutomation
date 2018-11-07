@@ -3,6 +3,8 @@
     using System.Collections.Generic;
     using Atata;
     using DataModels.Users;
+    using OpenQA.Selenium;
+    using SimpleAutomationCommon.Helpers.Extensions;
     using _ = RegistrationPage;
 
     [Url("register")]
@@ -117,6 +119,9 @@
 
         public bool IsLoaded()
             => RegisterButton.Exists();
+
+        public string GetUser()
+            => FullName.Get().Remove("Hello ", "!");
 
         public bool IsRegistered() => FullName.IsVisible;
     }

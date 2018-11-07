@@ -1,4 +1,7 @@
-﻿namespace SimpleAutomationCommon.Pages
+﻿using SimpleAutomationCommon.DataModels;
+using SimpleAutomationCommon.DataModels.Users;
+
+namespace SimpleAutomationCommon.Pages
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -17,6 +20,9 @@
 
         public IEnumerable<string> GetInfo()
             => UserInfo.Get().Remove("\r\nEdit", "\r").Split('\n').Select(i => i.Trim());
+
+        public User GetUser()
+            => new User { Email = new Email(GetInfo().Last()), FullName = GetInfo().First() };
 
         public bool IsLoaded()
             => EditAccount.IsEnabled;
