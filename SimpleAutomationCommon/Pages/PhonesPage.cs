@@ -1,7 +1,8 @@
-﻿namespace SimpleAutomationCommon.Pages
+﻿using System.Linq;
+using Atata;
+
+namespace SimpleAutomationCommon.Pages
 {
-    using System.Linq;
-    using Atata;
     using _ = PhonesPage;
 
     public class PhonesPage : BasePage<_>

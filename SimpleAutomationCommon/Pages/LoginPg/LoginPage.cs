@@ -1,8 +1,9 @@
-﻿namespace SimpleAutomationCommon.Pages.LoginPg
+﻿using Atata;
+using SimpleAutomationCommon.DataModels.Users;
+using SimpleAutomationCommon.Helpers.Extensions;
+
+namespace SimpleAutomationCommon.Pages.LoginPg
 {
-    using Atata;
-    using DataModels.Users;
-    using Helpers.Extensions;
     using _ = LoginPage;
 
     [Url("login")]
@@ -23,42 +24,45 @@
         [FindByXPath("//div[@class='text-danger validation-summary-errors']//li")]
         private Text<_> Error { get; set; }
 
-        public void FillAndSubmit(User user)
+        public LoginPage FillAndSubmit(User user)
         {
             FillForm(user.Email.Value, user.Password);
             Submit();
+            return this;
         }
 
-        public void FillAndSubmit(string email, string password)
+        public LoginPage FillAndSubmit(string email, string password)
         {
             FillForm(email, password);
             Submit();
+            return this;
         }
 
-        public void FillForm(string email, string password)
+        public LoginPage FillForm(string email, string password)
         {
             LoginInput.Set(email);
             PasswordInput.Set(password);
+            return this;
         }
 
-        public void Submit()
-            => LoginButton.Click();
+        public LoginPage Submit()
+            => LoginButton.ClickAndGo<LoginPage>();
 
-        public void SwitchRememberMe(bool side)
+        public LoginPage SwitchRememberMe(bool side)
         {
             if (!RememberMeCheckBox.IsChecked && side)
             {
                 RememberMeCheckBox.Click();
             }
+
+            return this;
         }
 
         public string GetUser()
-        {
-            var userName = FullName.Get();
-            return userName.Remove("Hello ", "!");
-        }
+            => FullName.Get().Remove("Hello ", "!");
 
-        public string GetError() => Error.Get();
+        public string GetError()
+            => Error.Get();
 
         public bool IsLoaded()
             => LoginButton.Exists();

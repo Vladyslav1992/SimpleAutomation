@@ -1,8 +1,8 @@
-﻿namespace SimpleAutomationCommon.DataModels
-{
-    using System.Collections.Generic;
-    using Enums;
+﻿using System.Collections.Generic;
+using SimpleAutomationCommon.DataModels.Enums;
 
+namespace SimpleAutomationCommon.DataModels
+{
     public class BaseProduct
     {
         public string Name;

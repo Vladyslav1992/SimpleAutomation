@@ -3,7 +3,7 @@
     public enum Browser
     {
         Chrome,
-        Ie,
+        Edge,
         Firefox
     }
 }

@@ -1,11 +1,11 @@
-﻿namespace SimpleAutomationCommon.Helpers
-{
-    using System.Collections.ObjectModel;
-    using DataModels.Builders;
-    using DataModels.Enums;
-    using OpenQA.Selenium;
-    using OpenQA.Selenium.Chrome;
+﻿using System.Collections.ObjectModel;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using SimpleAutomationCommon.DataModels.Builders;
+using SimpleAutomationCommon.DataModels.Enums;
 
+namespace SimpleAutomationCommon.Helpers
+{
     public static class CookiesManager
     {
         public static ReadOnlyCollection<Cookie> GetCookies(string userEmail)

@@ -1,8 +1,8 @@
-﻿namespace SimpleAutomationCommon.Pages
-{
-    using Atata;
-    using Helpers.Extensions;
+﻿using Atata;
+using SimpleAutomationCommon.Helpers.Extensions;
 
+namespace SimpleAutomationCommon.Pages
+{
     public class BasePage<TOwner> : Page<TOwner>
         where TOwner : BasePage<TOwner>
     {

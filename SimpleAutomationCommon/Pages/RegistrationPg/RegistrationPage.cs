@@ -1,10 +1,10 @@
-﻿namespace SimpleAutomationCommon.Pages.RegistrationPg
+﻿using System.Collections.Generic;
+using Atata;
+using SimpleAutomationCommon.DataModels.Users;
+using SimpleAutomationCommon.Helpers.Extensions;
+
+namespace SimpleAutomationCommon.Pages.RegistrationPg
 {
-    using System.Collections.Generic;
-    using Atata;
-    using DataModels.Users;
-    using OpenQA.Selenium;
-    using SimpleAutomationCommon.Helpers.Extensions;
     using _ = RegistrationPage;
 
     [Url("register")]
@@ -78,19 +78,21 @@
             return errors;
         }
 
-        public void FillAndSubmit(User user)
+        public RegistrationPage FillAndSubmit(User user)
         {
             FillForm(user);
             Submit();
+            return this;
         }
 
-        public void FillAndSubmit(string email, string fullName, string password, string cpassword)
+        public RegistrationPage FillAndSubmit(string email, string fullName, string password, string cpassword)
         {
             FillForm(email, fullName, password, cpassword);
             Submit();
+            return this;
         }
 
-        public void FillForm(User user)
+        public RegistrationPage FillForm(User user)
         {
             EmailInput.Clear();
             EmailInput.Set(user.Email.Value);
@@ -100,9 +102,10 @@
             PasswordInput.Set(user.Password);
             ConfirmPasswordInput.Clear();
             ConfirmPasswordInput.Set(user.Password);
+            return this;
         }
 
-        public void FillForm(string email, string fullName, string password, string cpassword)
+        public RegistrationPage FillForm(string email, string fullName, string password, string cpassword)
         {
             EmailInput.Clear();
             EmailInput.Set(email);
@@ -112,10 +115,11 @@
             PasswordInput.Set(password);
             ConfirmPasswordInput.Clear();
             ConfirmPasswordInput.Set(cpassword);
+            return this;
         }
 
-        public void Submit()
-            => RegisterButton.Click();
+        public RegistrationPage Submit()
+            => RegisterButton.ClickAndGo<RegistrationPage>();
 
         public bool IsLoaded()
             => RegisterButton.Exists();

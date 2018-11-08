@@ -1,12 +1,12 @@
-﻿using SimpleAutomationCommon.DataModels;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Atata;
+using SimpleAutomationCommon.DataModels;
 using SimpleAutomationCommon.DataModels.Users;
+using SimpleAutomationCommon.Helpers.Extensions;
 
 namespace SimpleAutomationCommon.Pages
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using Atata;
-    using Helpers.Extensions;
     using _ = AccountPage;
 
     [Url("user")]

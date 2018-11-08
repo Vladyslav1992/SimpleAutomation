@@ -1,17 +1,15 @@
-﻿using SimpleAutomationCommon.DataModels.Enums;
+﻿using System;
+using System.Linq;
+using Atata;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
+using SimpleAutomationCommon.DataModels.Enums;
+using SimpleAutomationCommon.Helpers;
 
 namespace SimpleAutomationTests
 {
-    using System;
-    using System.Linq;
-    using Atata;
-    using NUnit.Framework;
-    using OpenQA.Selenium;
-    using OpenQA.Selenium.Chrome;
-    using OpenQA.Selenium.Remote;
-    using SimpleAutomationCommon.Helpers;
-
-    [TestFixture]
     public class BaseTest
     {
         private AtataContextBuilder _contextBuilder;
@@ -27,10 +25,17 @@ namespace SimpleAutomationTests
         {
             StartBrowser();
             _contextBuilder.Build();
+            AtataContext.Current.Driver.Maximize();
         }
 
         [TearDown]
         protected void TearDown()
+        {
+            AtataContext.Current?.CleanUp();
+        }
+
+        [OneTimeTearDown]
+        protected void GeneralTearDown()
         {
             AtataContext.Current?.CleanUp();
         }
@@ -73,14 +78,18 @@ namespace SimpleAutomationTests
                     case Browser.Chrome:
                         _contextBuilder
                             .UseChrome()
+                            .WithFixOfCommandExecutionDelay()
                             .WithArguments("start-maximized", "disable-infobars", "disable-extensions")
                             .WithOptions(x => x.AddUserProfilePreference("credentials_enable_service", false));
                         break;
-                    case Browser.Ie:
-                        _contextBuilder.UseEdge();
+                    case Browser.Edge:
+                        _contextBuilder
+                            .UseEdge();
                         break;
                     case Browser.Firefox:
-                        _contextBuilder.UseFirefox();
+                        _contextBuilder
+                            .UseFirefox()
+                            .WithFixOfCommandExecutionDelay();
                         break;
                     default:
                         throw new ArgumentOutOfRangeException($"No such browser registered as:{browserName}");

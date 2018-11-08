@@ -1,6 +1,7 @@
-﻿namespace SimpleAutomationCommon.Pages
+﻿using Atata;
+
+namespace SimpleAutomationCommon.Pages
 {
-    using Atata;
     using _ = CheckOutPaymentPage;
 
     public class CheckOutPaymentPage : BasePage<_>

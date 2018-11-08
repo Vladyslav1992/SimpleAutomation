@@ -1,9 +1,9 @@
-﻿namespace SimpleAutomationCommon.Helpers
-{
-    using System;
-    using System.Diagnostics;
-    using System.Threading;
+﻿using System;
+using System.Diagnostics;
+using System.Threading;
 
+namespace SimpleAutomationCommon.Helpers
+{
     public static class Actions
     {
         public static void Persist(Action action, Action callBack = null, string message = "", double timeout = -1)

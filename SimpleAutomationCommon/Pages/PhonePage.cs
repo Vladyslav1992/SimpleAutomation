@@ -1,6 +1,7 @@
-﻿namespace SimpleAutomationCommon.Pages
+﻿using Atata;
+
+namespace SimpleAutomationCommon.Pages
 {
-    using Atata;
     using _ = PhonePage;
 
     public class PhonePage : BasePage<_>

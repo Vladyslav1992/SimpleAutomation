@@ -1,7 +1,7 @@
-﻿namespace SimpleAutomationCommon.DataModels.Enums
-{
-    using System.ComponentModel;
+﻿using System.ComponentModel;
 
+namespace SimpleAutomationCommon.DataModels.Enums
+{
     public enum SitePages
     {
         [Description("phones")]

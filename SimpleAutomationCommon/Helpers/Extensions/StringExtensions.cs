@@ -1,7 +1,7 @@
-﻿namespace SimpleAutomationCommon.Helpers.Extensions
-{
-    using System;
+﻿using System;
 
+namespace SimpleAutomationCommon.Helpers.Extensions
+{
     public static class StringExtensions
     {
         public static string RemoveWhiteSpaces(this string @string)

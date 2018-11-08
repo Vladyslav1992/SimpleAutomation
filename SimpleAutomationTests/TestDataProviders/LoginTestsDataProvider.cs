@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using NUnit.Framework;
 using SimpleAutomationCommon.DataModels.Builders;
-using SimpleAutomationCommon.DataModels.Users;
 
 namespace SimpleAutomationTests.TestDataProviders
 {

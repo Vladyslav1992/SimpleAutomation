@@ -1,7 +1,7 @@
-﻿namespace SimpleAutomationCommon.Helpers
-{
-    using System;
+﻿using System;
 
+namespace SimpleAutomationCommon.Helpers
+{
     public static class Wait
     {
         public static void For(Func<bool> condition, Action callBack = null, string message = "", double timeout = -1)

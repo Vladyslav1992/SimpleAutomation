@@ -1,8 +1,8 @@
-﻿namespace SimpleAutomationCommon.DataModels.Builders
-{
-    using System.Collections.Generic;
-    using Users;
+﻿using System.Collections.Generic;
+using SimpleAutomationCommon.DataModels.Users;
 
+namespace SimpleAutomationCommon.DataModels.Builders
+{
     public static class BaseUsers
     {
         private static readonly Dictionary<string, User> Users = new Dictionary<string, User>

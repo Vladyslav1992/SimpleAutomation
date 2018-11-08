@@ -1,12 +1,12 @@
-﻿namespace SimpleAutomationCommon.Helpers
-{
-    using System;
-    using System.IO;
-    using System.Linq;
-    using Extensions;
-    using Microsoft.Extensions.Configuration;
-    using SimpleAutomationCommon.DataModels.Enums;
+﻿using System;
+using System.IO;
+using System.Linq;
+using Microsoft.Extensions.Configuration;
+using SimpleAutomationCommon.DataModels.Enums;
+using SimpleAutomationCommon.Helpers.Extensions;
 
+namespace SimpleAutomationCommon.Helpers
+{
     public static class ConfigurationHelper
     {
         // public static string TestEnvironment { get; } = "IntegrationTest";

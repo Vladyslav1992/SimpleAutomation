@@ -1,7 +1,7 @@
-﻿namespace SimpleAutomationCommon.DataModels
-{
-    using System.Net.Mail;
+﻿using System.Net.Mail;
 
+namespace SimpleAutomationCommon.DataModels
+{
     public class Email
     {
         public string Value { get; }

@@ -1,11 +1,11 @@
-﻿namespace SimpleAutomationCommon.Helpers.Extensions
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Linq;
-    using System.Text.RegularExpressions;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text.RegularExpressions;
 
+namespace SimpleAutomationCommon.Helpers.Extensions
+{
     public static class Extensions
     {
         public static List<T> ParseToList<T>(this string comaSeparatesString)

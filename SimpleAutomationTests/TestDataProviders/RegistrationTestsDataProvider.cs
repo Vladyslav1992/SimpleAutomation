@@ -1,8 +1,8 @@
-﻿namespace SimpleAutomationTests.TestDataProviders
-{
-    using System.Collections;
-    using NUnit.Framework;
+﻿using System.Collections;
+using NUnit.Framework;
 
+namespace SimpleAutomationTests.TestDataProviders
+{
     public class RegistrationTestsDataProvider
     {
         public static IEnumerable InvalidTestData
