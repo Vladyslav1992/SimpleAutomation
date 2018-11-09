@@ -46,7 +46,7 @@ namespace SimpleAutomationTests
             var selenoidHub = Environment.GetEnvironmentVariable("selenoidHub");
             var mainUrl = Environment.GetEnvironmentVariable("simplCommerceEndpoint") ?? ConfigurationHelper.MainUrl;
             var optionArguments = Environment.GetEnvironmentVariable("optionArguments");
-
+            
             if (browserParameters != null && selenoidHub != null)
             {
                 var browserCaps = browserParameters.Split('_').ToList();
@@ -57,7 +57,7 @@ namespace SimpleAutomationTests
                 options.AddArguments(optionArguments.Split(';'));
                 var capabilities = options.ToCapabilities() as DesiredCapabilities;
                 capabilities.Platform = new Platform(PlatformType.Any);
-                capabilities.SetCapability("enableVNC", true);
+                capabilities.SetCapability("enableVNC", ConfigurationHelper.Vnc);
                 capabilities.SetCapability("enableVideo", false);
                 capabilities.SetCapability("screenResolution", "1920x1080x24");
                 capabilities.SetCapability(CapabilityType.BrowserName, browserCaps[0]);

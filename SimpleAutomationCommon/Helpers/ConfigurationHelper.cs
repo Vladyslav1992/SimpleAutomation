@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
@@ -9,10 +10,11 @@ namespace SimpleAutomationCommon.Helpers
 {
     public static class ConfigurationHelper
     {
-        // public static string TestEnvironment { get; } = "IntegrationTest";
         public static string MainUrl { get; } = Environment.GetEnvironmentVariable("simplCommerceEndpoint") ?? GetSettings("App", "homeUrl");
 
         public static Browser Browser => Enum.Parse<Browser>(GetSettings("Browser", "Name"), true);
+        
+        public static bool Vnc => (Environment.GetEnvironmentVariable("vnc") ?? GetSettings("Browser", "Vnc")).Contains("true");
 
         public static TimeSpan RetryTimeOut => TimeSpan.FromMilliseconds(GetSettings("Browser", "retryTimeout").ToInt());
 
