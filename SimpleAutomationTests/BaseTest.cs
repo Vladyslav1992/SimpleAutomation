@@ -105,7 +105,9 @@ namespace SimpleAutomationTests
                 .AddNUnitTestContextLogging()
                 .LogNUnitError()
                 .TakeScreenshotOnNUnitError()
-                .AddScreenshotFileSaving();
+                .AddScreenshotFileSaving()
+                .WithFolderPath(() => $@"ScreenShots\{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}")
+                .WithFileName(screenshotInfo => $"{AtataContext.Current.TestName} - {screenshotInfo.PageObjectName}"); // "{AtataContext.Current.TestName} - {screenshotInfo.PageObjectFullName}"
         }
     }
 }
