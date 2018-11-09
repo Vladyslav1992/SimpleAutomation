@@ -10,15 +10,19 @@ namespace SimpleAutomationCommon.Helpers
 {
     public static class ConfigurationHelper
     {
-        public static string MainUrl { get; } = Environment.GetEnvironmentVariable("simplCommerceEndpoint") ?? GetSettings("App", "homeUrl");
+        public static string MainUrl { get; } = Environment.GetEnvironmentVariable("simplCommerceEndpoint") ??
+                                                GetSettings("App", "homeUrl");
 
         public static Browser Browser => Enum.Parse<Browser>(GetSettings("Browser", "Name"), true);
-        
-        public static bool Vnc => (Environment.GetEnvironmentVariable("vnc") ?? GetSettings("Browser", "Vnc")).Contains("true");
 
-        public static TimeSpan RetryTimeOut => TimeSpan.FromMilliseconds(GetSettings("Browser", "retryTimeout").ToInt());
+        public static bool Vnc =>
+            (Environment.GetEnvironmentVariable("vnc") ?? GetSettings("Browser", "Vnc")).Contains("true");
 
-        public static TimeSpan ElementTimeOut => TimeSpan.FromSeconds(GetSettings("Browser", "elementTimeout").Split(':').Last().ToInt());
+        public static TimeSpan RetryTimeOut =>
+            TimeSpan.FromMilliseconds(GetSettings("Browser", "retryTimeout").ToInt());
+
+        public static TimeSpan ElementTimeOut =>
+            TimeSpan.FromSeconds(GetSettings("Browser", "elementTimeout").Split(':').Last().ToInt());
 
         private static string GetSettings(string sectionName, string settingName)
         {

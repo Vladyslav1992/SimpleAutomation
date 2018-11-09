@@ -46,7 +46,7 @@ namespace SimpleAutomationTests
             var selenoidHub = Environment.GetEnvironmentVariable("selenoidHub");
             var mainUrl = Environment.GetEnvironmentVariable("simplCommerceEndpoint") ?? ConfigurationHelper.MainUrl;
             var optionArguments = Environment.GetEnvironmentVariable("optionArguments");
-            
+
             if (browserParameters != null && selenoidHub != null)
             {
                 var browserCaps = browserParameters.Split('_').ToList();
