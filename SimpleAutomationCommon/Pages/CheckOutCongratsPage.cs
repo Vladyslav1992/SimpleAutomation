@@ -1,8 +1,7 @@
-﻿using Atata;
-using OpenQA.Selenium;
-
-namespace SimpleAutomationCommon.Pages
+﻿namespace SimpleAutomationCommon.Pages
 {
+    using Atata;
+    using OpenQA.Selenium;
     using _ = CheckOutCongratsPage;
 
     public class CheckOutCongratsPage : BasePage<_>
