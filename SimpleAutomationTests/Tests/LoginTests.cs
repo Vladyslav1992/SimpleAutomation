@@ -1,14 +1,14 @@
-﻿using System.Linq;
-using Atata;
-using FluentAssertions;
-using NUnit.Framework;
-using SimpleAutomationCommon.DataModels.Users;
-using SimpleAutomationCommon.Pages;
-using SimpleAutomationCommon.Pages.LoginPg;
-using SimpleAutomationTests.TestDataProviders;
-
-namespace SimpleAutomationTests.Tests
+﻿namespace SimpleAutomationTests.Tests
 {
+    using System.Linq;
+    using Atata;
+    using FluentAssertions;
+    using NUnit.Framework;
+    using SimpleAutomationCommon.DataModels.Users;
+    using SimpleAutomationCommon.Pages;
+    using SimpleAutomationCommon.Pages.LoginPg;
+    using TestDataProviders;
+
     public class LoginTests : BaseTest
     {
         [Test]

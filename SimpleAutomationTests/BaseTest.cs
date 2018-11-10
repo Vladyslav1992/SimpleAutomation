@@ -103,11 +103,10 @@ namespace SimpleAutomationTests
                 .UseCulture("en-us")
                 .UseNUnitTestName()
                 .AddNUnitTestContextLogging()
-                .LogNUnitError()
                 .TakeScreenshotOnNUnitError()
                 .AddScreenshotFileSaving()
-                .WithFolderPath(() => $@"ScreenShots\{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}")
-                .WithFileName(screenshotInfo => $"{AtataContext.Current.TestName} - {screenshotInfo.PageObjectName}"); // "{AtataContext.Current.TestName} - {screenshotInfo.PageObjectFullName}"
+                .WithFolderPath(() => $@"ScreenShots\{ConfigurationHelper.ScreenshotsFolderPath}{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}")
+                .WithFileName(screenshotInfo => $"{AtataContext.Current.TestName} - {screenshotInfo.PageObjectName}");
         }
     }
 }

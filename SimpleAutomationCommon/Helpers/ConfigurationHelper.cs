@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Microsoft.Extensions.Configuration;
-using SimpleAutomationCommon.DataModels.Enums;
-using SimpleAutomationCommon.Helpers.Extensions;
-
-namespace SimpleAutomationCommon.Helpers
+﻿namespace SimpleAutomationCommon.Helpers
 {
+    using System;
+    using System.IO;
+    using System.Linq;
+    using DataModels.Enums;
+    using Extensions;
+    using Microsoft.Extensions.Configuration;
+
     public static class ConfigurationHelper
     {
-        public static string MainUrl { get; } = Environment.GetEnvironmentVariable("simplCommerceEndpoint") ??
-                                                GetSettings("App", "homeUrl");
+        public static string MainUrl { get; } =
+            Environment.GetEnvironmentVariable("simplCommerceEndpoint") ?? GetSettings("App", "homeUrl");
+
+        public static string ScreenshotsFolderPath { get; } =
+            Environment.GetEnvironmentVariable("screenShotsFolderPath") ?? string.Empty;
 
         public static Browser Browser => Enum.Parse<Browser>(GetSettings("Browser", "Name"), true);
 
