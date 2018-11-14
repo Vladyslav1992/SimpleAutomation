@@ -102,10 +102,11 @@ namespace SimpleAutomationTests
                 .UseWaitingRetryInterval(ConfigurationHelper.RetryTimeOut)
                 .UseCulture("en-us")
                 .AddNUnitTestContextLogging()
+                .UseNUnitTestName()
                 .TakeScreenshotOnNUnitError()
                 .AddScreenshotFileSaving()
-                .WithFolderPath(() => $@"ScreenShots\{ConfigurationHelper.ScreenshotsFolderPath}{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}")
-                .WithFileName(screenshotInfo => $"{AtataContext.Current.TestName} - {screenshotInfo.PageObjectName}");
+                .WithFolderPath(() => $@"ScreenShots\{ConfigurationHelper.ScreenshotsFolderPath}{AtataContext.BuildStart:yyyy-MM-dd-HH-mm-ss}")
+                .WithFileName(screenshotInfo => $"{screenshotInfo.PageObjectName}_{AtataContext.Current.TestName}");
         }
     }
 }
