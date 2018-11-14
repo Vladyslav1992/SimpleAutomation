@@ -101,7 +101,6 @@ namespace SimpleAutomationTests
                 .UseElementFindTimeout(ConfigurationHelper.ElementTimeOut)
                 .UseWaitingRetryInterval(ConfigurationHelper.RetryTimeOut)
                 .UseCulture("en-us")
-                .UseNUnitTestName()
                 .AddNUnitTestContextLogging()
                 .TakeScreenshotOnNUnitError()
                 .AddScreenshotFileSaving()
