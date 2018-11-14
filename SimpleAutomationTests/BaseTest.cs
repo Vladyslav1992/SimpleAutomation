@@ -1,15 +1,16 @@
-﻿using System;
-using System.Linq;
-using Atata;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
-using SimpleAutomationCommon.DataModels.Enums;
-using SimpleAutomationCommon.Helpers;
-
-namespace SimpleAutomationTests
+﻿namespace SimpleAutomationTests
 {
+    using System;
+    using System.Linq;
+    using Atata;
+    using NUnit.Framework;
+    using OpenQA.Selenium;
+    using OpenQA.Selenium.Chrome;
+    using OpenQA.Selenium.Remote;
+    using SimpleAutomationCommon.DataModels.Enums;
+    using SimpleAutomationCommon.Helpers;
+    using LogLevel = Atata.LogLevel;
+
     public class BaseTest
     {
         private AtataContextBuilder _contextBuilder;
@@ -102,6 +103,7 @@ namespace SimpleAutomationTests
                 .UseWaitingRetryInterval(ConfigurationHelper.RetryTimeOut)
                 .UseCulture("en-us")
                 .AddNUnitTestContextLogging()
+                .WithMinLevel(LogLevel.Debug)
                 .UseNUnitTestName()
                 .TakeScreenshotOnNUnitError()
                 .AddScreenshotFileSaving()

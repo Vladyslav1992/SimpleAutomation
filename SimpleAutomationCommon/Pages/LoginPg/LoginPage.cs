@@ -1,9 +1,8 @@
-﻿using Atata;
-using SimpleAutomationCommon.DataModels.Users;
-using SimpleAutomationCommon.Helpers.Extensions;
-
-namespace SimpleAutomationCommon.Pages.LoginPg
+﻿namespace SimpleAutomationCommon.Pages.LoginPg
 {
+    using Atata;
+    using DataModels.Users;
+    using Helpers.Extensions;
     using _ = LoginPage;
 
     [Url("login")]
